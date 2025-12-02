@@ -6,6 +6,7 @@ import Teams from '../components/Home/Teams';
 import Support from '../components/Home/Support';
 import Merchant from '../components/Home/Merchant';
 import Testimonial from '../components/Home/Testimonial';
+import FAQSection from '../components/Home/FAQSection';
 
 const HomePage = () => {
     return (
@@ -17,6 +18,7 @@ const HomePage = () => {
             <Support></Support>
             <Merchant></Merchant>
             <Testimonial></Testimonial>
+            <FAQSection></FAQSection>
         </div>
     );
 };
