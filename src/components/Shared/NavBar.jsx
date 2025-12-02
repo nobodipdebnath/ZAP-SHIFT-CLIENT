@@ -21,10 +21,12 @@ const NavBar = () => {
                 {links}
             </ul>
             <div className='flex items-center gap-4'>
-                <Link to='/signUp'>
-                    <button className='text-xl font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Sign In</button>
+                <Link to='/login'>
+                    <button className='text-lg font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>LogIn</button>
                 </Link>
-                <button className='text-xl font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Be a rider</button>
+                <Link to='/register'>
+                    <button className='text-lg font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Register</button>
+                </Link>
                 <button className='p-3 bg-dark-blue rounded-full'><FiArrowUpRight className='text-[#CAEB66] text-2xl '></FiArrowUpRight></button>
             </div>
         </nav>
