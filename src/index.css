@@ -17,3 +17,6 @@ body{
     font-style: normal;
     background-color: rgba(234, 236, 237, 1);
 }
+.services{
+    background: linear-gradient(180.00deg, rgba(238, 237, 252, 1),rgba(238, 237, 252, 0) 100%)
+}
