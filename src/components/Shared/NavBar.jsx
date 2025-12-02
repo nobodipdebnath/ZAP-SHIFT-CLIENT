@@ -21,7 +21,9 @@ const NavBar = () => {
                 {links}
             </ul>
             <div className='flex items-center gap-4'>
-                <button className='text-xl font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Sign In</button>
+                <Link to='/signUp'>
+                    <button className='text-xl font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Sign In</button>
+                </Link>
                 <button className='text-xl font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Be a rider</button>
                 <button className='p-3 bg-dark-blue rounded-full'><FiArrowUpRight className='text-[#CAEB66] text-2xl '></FiArrowUpRight></button>
             </div>
