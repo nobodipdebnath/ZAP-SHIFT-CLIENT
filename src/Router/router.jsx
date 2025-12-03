@@ -10,6 +10,7 @@ import Coverage from "../Pages/Coverage";
 import ErrorPage from "../Pages/ErrorPage";
 import PrivetRoutes from "./PrivetRoutes";
 import SandAParcel from "../Pages/SandAParcel";
+import AboutPage from "../Pages/AboutPage";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,16 @@ const router = createBrowserRouter([
                     <SandAParcel></SandAParcel>
                 </PrivetRoutes>,
                 loader: () => fetch('./warehouses.json')
+            },
+            {
+                path: 'about',
+                Component: AboutPage,
+                children: [
+                    {
+                        path: 'about',
+                        element: <p>Nobodip</p>
+                    }
+                ]
             },
             {
                 path: '*',

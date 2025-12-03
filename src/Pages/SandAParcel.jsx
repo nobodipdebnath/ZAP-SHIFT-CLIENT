@@ -67,24 +67,24 @@ const SendParcel = () => {
             title: "Delivery Cost Breakdown",
             icon: "info",
             html: `
-      <div class="text-left text-base space-y-2">
-        <p><strong>Parcel Type:</strong> ${data.type}</p>
-        <p><strong>Weight:</strong> ${weight} kg</p>
-        <p><strong>Delivery Zone:</strong> ${isSameDistrict ? "Within Same District" : "Outside District"}</p>
-        <hr class="my-2"/>
-        <p><strong>Base Cost:</strong> ৳${baseCost}</p>
-        ${extraCost > 0 ? `<p><strong>Extra Charges:</strong> ৳${extraCost}</p>` : ""}
-        <div class="text-gray-500 text-sm">${breakdown}</div>
-        <hr class="my-2"/>
-        <p class="text-xl font-bold text-green-600">Total Cost: ৳${totalCost}</p>
-      </div>
-    `,
-            showDenyButton: true,
-            confirmButtonText: "💳 Proceed to Payment",
-            denyButtonText: "✏️ Continue Editing",
-            confirmButtonColor: "#16a34a",
-            denyButtonColor: "#d3d3d3",
-            customClass: {
+                <div class="text-left text-base space-y-2">
+                    <p><strong>Parcel Type:</strong> ${data.type}</p>
+                    <p><strong>Weight:</strong> ${weight} kg</p>
+                    <p><strong>Delivery Zone:</strong> ${isSameDistrict ? "Within Same District" : "Outside District"}</p>
+                    <hr class="my-2"/>
+                    <p><strong>Base Cost:</strong> ৳${baseCost}</p>
+                    ${extraCost > 0 ? `<p><strong>Extra Charges:</strong> ৳${extraCost}</p>` : ""}
+                    <div class="text-gray-500 text-sm">${breakdown}</div>
+                    <hr class="my-2"/>
+                    <p class="text-xl font-bold text-green-600">Total Cost: ৳${totalCost}</p>
+                </div>
+                `,
+                showDenyButton: true,
+                confirmButtonText: "💳 Proceed to Payment",
+                denyButtonText: "✏️ Continue Editing",
+                confirmButtonColor: "#16a34a",
+                denyButtonColor: "#d3d3d3",
+                customClass: {
                 popup: "rounded-xl shadow-md px-6 py-6",
             },
         }).then((result) => {
