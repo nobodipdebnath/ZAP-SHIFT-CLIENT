@@ -7,7 +7,9 @@
     --color-dark-blue:#1F1F1F;
     --color-dep-dark: rgba(218, 218, 218, 1);
     --color-green-blue: rgba(3, 55, 61, 1);
-    --color-black-base: rgba(96, 96, 96, 1)
+    --color-black-base: rgba(96, 96, 96, 1);
+    --color-input-label: rgba(15, 23, 42, 1);
+    --color-input-text: rgba(148, 163, 184, 1);
 }
 
 body{

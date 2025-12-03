@@ -30,7 +30,8 @@ const router = createBrowserRouter([
                 path: 'sendParcel',
                 element: <PrivetRoutes>
                     <SandAParcel></SandAParcel>
-                </PrivetRoutes>
+                </PrivetRoutes>,
+                loader: () => fetch('./warehouses.json')
             },
             {
                 path: '*',
