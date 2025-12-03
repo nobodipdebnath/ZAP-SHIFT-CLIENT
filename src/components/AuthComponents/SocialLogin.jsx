@@ -1,0 +1,39 @@
+import React from 'react';
+import { FcGoogle } from "react-icons/fc";
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+
+const SocialLogin = () => {
+    const {signInWithGoogle} = useAuth();
+    const googleSignIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            if(result.user){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Google Login Success ",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+    return (
+        <div>
+            <div className='divider text-[#71717A]'>or</div>
+            <div>
+                <button onClick={googleSignIn} className='flex items-center justify-center bg-[#E9ECF1] gap-2 w-full py-3 rounded-lg cursor-pointer'>
+                    <FcGoogle></FcGoogle>
+                    <p className='text-base font-semibold text-black'>Sign in With Google</p>
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default SocialLogin;

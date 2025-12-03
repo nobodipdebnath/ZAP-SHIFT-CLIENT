@@ -1,13 +1,42 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import Loading from '../Shared/Loading';
 
 const ForgotPassword = () => {
     const{register, handleSubmit, formState: {errors}} = useForm();
+    const {passwordReset, loading} = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
+        passwordReset(data.email)
+            .then(() => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Password reset mail sent! Please check your email.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Something went wrong!",
+                    text: error.message,
+                    showConfirmButton: true,
+                });
+            });
+        navigate('/login')
+    };
+    if(loading){
+        return <Loading></Loading>
     }
+
     return (
         <div>
             <h1 className='text-[42px] font-extrabold text-black'>Forgot Password</h1>

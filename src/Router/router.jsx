@@ -5,11 +5,13 @@ import AuthLayout from "../Layout/AuthLayout";
 import SignIn from "../components/AuthComponents/SignIn";
 import Register from "../components/AuthComponents/Register";
 import ForgotPassword from "../components/AuthComponents/ForgotPassword";
+import Loading from "../components/Shared/Loading";
 
 const router = createBrowserRouter([
     {
         path: '/',
         Component: Root,
+        hydrateFallbackElement: <Loading></Loading>,
         children: [
             {
                 index: true,
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         Component: AuthLayout,
+        hydrateFallbackElement: <Loading></Loading>,
         children: [
             {
                 path: '/login',

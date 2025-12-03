@@ -2,12 +2,41 @@ import React from 'react';
 import { Link } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from 'react-hook-form';
+import SocialLogin from './SocialLogin';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import Loading from '../Shared/Loading';
 
 const Register = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const {createAccount, emailVerify, loading} = useAuth();
 
     const onSubmit = data => {
-        console.log(data);
+        createAccount(data.email, data.password)
+        .then(result => {
+            emailVerify(result.user)
+            .then(()=> {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Please Verify your email !",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+        })
+        .catch(error=> {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `${error.message}`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+    }
+    if(loading){
+        return <Loading></Loading>
     }
 
     return (
@@ -53,14 +82,8 @@ const Register = () => {
                     <button type='submit' className='py-3 w-full rounded-lg bg-[#CAEB66] text-base text-black font-semibold cursor-pointer'>Register</button>
                 </div>
                 <p className='text-base text-[#71717A]'>You have already account ? <Link to='/login' className='text-[#8FA748] underline'>Log In</Link></p>
-                <div className='divider text-[#71717A]'>or</div>
-                <div>
-                    <button className='flex items-center justify-center bg-[#E9ECF1] gap-2 w-full py-3 rounded-lg cursor-pointer'>
-                        <FcGoogle></FcGoogle>
-                        <p className='text-base font-semibold text-black'>Sign in With Google</p>
-                    </button>
-                </div>
             </form>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

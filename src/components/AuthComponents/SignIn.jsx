@@ -1,13 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { FcGoogle } from "react-icons/fc";
 import { useForm } from 'react-hook-form';
+import SocialLogin from './SocialLogin';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import Loading from '../Shared/Loading';
 
 const SignIn = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const { logInUser, loading} = useAuth();
 
     const onSubmit = data => {
-        console.log(data);
+        logInUser(data.email, data.password)
+        .then(result => {
+            if(!result.user?.emailVerified){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Please Verify your email !",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Log In Success 🥰",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+        .catch(error => {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: `${error.message}`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+    }
+    
+    if(loading){
+        return <Loading></Loading>
     }
 
     return (
@@ -37,14 +73,8 @@ const SignIn = () => {
                     <button type='submit' className='py-3 w-full rounded-lg bg-[#CAEB66] text-base text-black font-semibold cursor-pointer'>LogIn</button>
                 </div>
                 <p className='text-base text-[#71717A]'>You have no account ? <Link to='/register' className='text-[#8FA748] underline'>Register</Link></p>
-                <div className='divider text-[#71717A]'>or</div>
-                <div>
-                    <button className='flex items-center justify-center bg-[#E9ECF1] gap-2 w-full py-3 rounded-lg cursor-pointer'>
-                        <FcGoogle></FcGoogle>
-                        <p className='text-base font-semibold text-black'>Sign in With Google</p>
-                    </button>
-                </div>
             </form>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
