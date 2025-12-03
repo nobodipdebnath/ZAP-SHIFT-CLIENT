@@ -7,6 +7,9 @@ import Register from "../components/AuthComponents/Register";
 import ForgotPassword from "../components/AuthComponents/ForgotPassword";
 import Loading from "../components/Shared/Loading";
 import Coverage from "../Pages/Coverage";
+import ErrorPage from "../Pages/ErrorPage";
+import PrivetRoutes from "./PrivetRoutes";
+import SandAParcel from "../Pages/SandAParcel";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +25,16 @@ const router = createBrowserRouter([
                 path:'coverage',
                 Component: Coverage,
                 loader: ()=> fetch('./warehouses.json')
+            },
+            {
+                path: 'sendParcel',
+                element: <PrivetRoutes>
+                    <SandAParcel></SandAParcel>
+                </PrivetRoutes>
+            },
+            {
+                path: '*',
+                Component: ErrorPage
             }
         ]
     },

@@ -20,3 +20,6 @@ body{
 .services{
     background: linear-gradient(180.00deg, rgba(238, 237, 252, 1),rgba(238, 237, 252, 0) 100%)
 }
+.active{
+    @apply px-5 py-3 rounded-full bg-[#CAEB66]
+}

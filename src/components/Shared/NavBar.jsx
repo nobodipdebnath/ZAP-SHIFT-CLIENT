@@ -7,12 +7,12 @@ import Swal from 'sweetalert2';
 const NavBar = () => {
     const {user, logOutUser} = useAuth();
     const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/services'>Services</NavLink></li>
-        <li><NavLink to='/coverage'>Coverage</NavLink></li>
-        <li><NavLink to='/about'>About Us</NavLink></li>
-        <li><NavLink to='/pricing'>Pricing</NavLink></li>
-        <li><NavLink to='/ride'>Be a Rider</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/'>Home</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/sendParcel'>Send Parcel</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/coverage'>Coverage</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/about'>About Us</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/pricing'>Pricing</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/ride'>Be a Rider</NavLink></li>
     </>
     
     const logOut = () => {
@@ -42,7 +42,7 @@ const NavBar = () => {
             <div>
                 <Link><img src={logo} alt="" /></Link>
             </div>
-            <ul className='flex text-base font-medium text-base-gray items-center gap-6'>
+            <ul className='flex text-base font-medium text-base-gray items-center'>
                 {links}
             </ul>
             {
@@ -50,16 +50,16 @@ const NavBar = () => {
                 ? 
                 <div className='flex items-center gap-4'>
                     <Link>
-                        <button onClick={logOut} className='text-lg font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Log Out</button>
+                        <button onClick={logOut} className='text-lg font-bold text-base-gray px-8 py-3 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Log Out</button>
                     </Link>
                 </div> 
                 : 
                 <div className='flex items-center gap-4'>
                     <Link to='/login'>
-                        <button className='text-lg font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>LogIn</button>
+                        <button className='text-lg font-bold text-base-gray px-8 py-3 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>LogIn</button>
                     </Link>
                     <Link to='/register'>
-                        <button className='text-lg font-bold text-base-gray px-8 py-4 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Register</button>
+                        <button className='text-lg font-bold text-base-gray px-8 py-3 rounded-xl border-[#DADADA] hover:bg-[#CAEB66] duration-500 hover:text-black border'>Register</button>
                     </Link>
                     <button className='p-3 bg-dark-blue rounded-full'><FiArrowUpRight className='text-[#CAEB66] text-2xl '></FiArrowUpRight></button>
                 </div>
