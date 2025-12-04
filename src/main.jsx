@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode} from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router";
@@ -6,6 +6,9 @@ import router from "./Router/router";
 import AuthProvider from "./Context/AuthContext/AuthProvider";
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 // Create Query Client
 const queryClient = new QueryClient();
 
