@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../Shared/Loading";
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -31,6 +33,7 @@ const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { id } = useParams();
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -77,32 +80,40 @@ const PaymentForm = () => {
       setSuccessMsg("Payment method created: " + paymentMethod.id);
       console.log("Payment method:", paymentMethod);
       // এখানে paymentIntent backend এ create করে confirm করতে হবে
-    }
-    const res = await axiosSecure.post('/create-payment-intent', {
+
+      const res = await axiosSecure.post("/create-payment-intent", {
         amountInCents,
-        id
-      })
+        id,
+      });
 
       const clientSecret = res.data.clientSecret;
 
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-            card: elements.getElement(CardElement),
-            billing_details: {
-                name: 'Nobodip Debnath'
-            }
-        }
-      })
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: user.displayName,
+            email: user.email,
+          },
+        },
+      });
 
-      if(result.error){
+      if (result.error) {
         console.log(result.error.message);
-      } else{
-        if(result.paymentIntent.status === 'succeeded'){
-            console.log('Payment Succeeded');
-            console.log(result);
+      } else {
+        if (result.paymentIntent.status === "succeeded") {
+          console.log("Payment Succeeded");
+          console.log(result);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${amount} taka Payment Succeeded`,
+            showConfirmButton: false,
+            timer: 1500
+            });
         }
       }
-      console.log( 'res in client',res);
+    }
   };
 
   return (
@@ -119,11 +130,15 @@ const PaymentForm = () => {
         </div>
 
         {errorMsg && (
-          <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded">{errorMsg}</p>
+          <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded">
+            {errorMsg}
+          </p>
         )}
 
         {successMsg && (
-          <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded">{successMsg}</p>
+          <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded">
+            {successMsg}
+          </p>
         )}
 
         <button
