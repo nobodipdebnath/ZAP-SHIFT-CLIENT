@@ -1,13 +1,27 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
+import useAuth from "../Hooks/useAuth";
+import logo from '../assets/logo.png'
 
 const DashBoardLayout = () => {
+    const {user} = useAuth();
+    // console.log(user);
+    const links =[
+        {
+            path: '/home',
+            text: "Home",
+        },
+        {
+            path: '/dashboard/myParcels',
+            text: "My Parcels"
+        }
+    ]
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Page content here */}
-        <div className="navbar bg-base-300 lg:hidden w-full">
+        <div className="navbar lg:bg-base-300 lg:hidden w-full">
           <div className="flex-none ">
             <label
               htmlFor="my-drawer-3"
@@ -32,7 +46,17 @@ const DashBoardLayout = () => {
           <div className="mx-2 flex-1 px-2">Dash Board</div>
         </div>
         {/*  */}
-        <Outlet></Outlet>
+        <div className="m-10 mt-6">
+            <div className="py-4 mb-8 flex items-center justify-between px-10 bg-white rounded-xl">
+                <div>
+                    <Link to='/'><img src={logo} alt="" /></Link>
+                </div>
+                <div>
+                    <h1 className="text-3xl font-extrabold text-green-blue">{user.displayName}</h1>
+                </div>
+            </div>
+            <Outlet></Outlet>
+        </div>
         {/*  */}
       </div>
       <div className="drawer-side">
@@ -41,14 +65,19 @@ const DashBoardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 min-h-full w-[80%] md:w-[300px] p-4">
-          {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+        <ul className="  bg-white min-h-full w-[80%] md:w-[300px] p-4">
+            <div>
+                <Link to='/'><img src={logo} alt="" /></Link>
+            </div>
+            <div className="flex flex-col gap-4 mt-8">
+                {
+                    links.map((link, idx) => {
+                        return(
+                            <Link to={link.path}  className="py-2 px-5 border-input-text rounded-lg  w-full border" key={idx}><li >{link.text}</li></Link>
+                        )
+                    })
+                }
+            </div>
         </ul>
       </div>
     </div>

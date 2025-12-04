@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 
 const Root = () => {
     return (
-        <div className=' py-12 mt-0 mb-0 m-12'>
+        <div className=' py-10 mt-0 mb-0 m-10'>
             <NavBar></NavBar>
             <Outlet></Outlet>
             <Footer></Footer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from 'react-hook-form';
 import SocialLogin from './SocialLogin';
@@ -10,6 +10,7 @@ import Loading from '../Shared/Loading';
 const Register = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const {createAccount, emailVerify, loading} = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         createAccount(data.email, data.password)
@@ -24,6 +25,7 @@ const Register = () => {
                     timer: 1500
                 });
             })
+            navigate('/login')
         })
         .catch(error=> {
             Swal.fire({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import SocialLogin from './SocialLogin';
 import useAuth from '../../Hooks/useAuth';
@@ -9,6 +9,9 @@ import Loading from '../Shared/Loading';
 const SignIn = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const { logInUser, loading} = useAuth();
+    const location = useLocation();
+    const form = location.state?.from || '/';
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         logInUser(data.email, data.password)
@@ -30,6 +33,7 @@ const SignIn = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            navigate(form);
         })
         .catch(error => {
             Swal.fire({

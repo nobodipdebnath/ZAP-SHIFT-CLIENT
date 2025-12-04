@@ -8,7 +8,7 @@ import banner3 from '../../assets/banner/banner3.png';
 
 const Banner = () => {
   return (
-    <Carousel className="my-15" interval={3000}  autoPlay infiniteLoop showThumbs={false}>
+    <Carousel className="my-8" interval={3000}  autoPlay infiniteLoop showThumbs={false}>
       <div>
         <img src={banner1} />
       </div>
