@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const generateTrackingID = () => {
     const date = new Date();
@@ -18,6 +19,7 @@ const SendParcel = () => {
         formState: { errors },
     } = useForm();
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate();
 
     const serviceCenters = useLoaderData();
@@ -103,9 +105,9 @@ const SendParcel = () => {
                 console.log("Ready for payment:", parcelData);
 
                 axiosSecure.post('/parcels', parcelData)
-                    .then(async (res) => {
-                        console.log(res.data);
-                        if (res.data.insertedId) {
+                    .then(async (result) => {
+                        // console.log(result.data.insertedId);
+                        if (result.data?.data?.insertedId) {
                             Swal.fire({
                                 title: "Redirecting...",
                                 text: "Proceeding to payment gateway.",
@@ -114,14 +116,14 @@ const SendParcel = () => {
                                 showConfirmButton: false,
                             });
 
-                            await logTracking({
-                                tracking_id: parcelData.tracking_id,
-                                status: "parcel_created",
-                                details: `Created by ${user.displayName}`,
-                                updated_by: user.email,
-                            })
+                            // await logTracking({
+                            //     tracking_id: parcelData.tracking_id,
+                            //     status: "parcel_created",
+                            //     details: `Created by ${user.displayName}`,
+                            //     updated_by: user.email,
+                            // })
 
-                            navigate('/dashboard/myParcels')
+                            // navigate('/dashboard/myParcels')
                         }
                     })
 

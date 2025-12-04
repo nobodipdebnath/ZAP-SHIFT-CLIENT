@@ -16,6 +16,8 @@ import Story from "../components/About/Story";
 import Mission from "../components/About/Mission";
 import Success from "../components/About/Success";
 import Team from "../components/About/Team";
+import DashBoardLayout from "../Layout/DashBoardLayout";
+import MyParcels from "../components/Dashboard/MyParcels/MyParcels";
 
 const router = createBrowserRouter([
     {
@@ -83,6 +85,18 @@ const router = createBrowserRouter([
             {
                 path: 'forgotPassword',
                 Component: ForgotPassword
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivetRoutes>
+            <DashBoardLayout></DashBoardLayout>
+        </PrivetRoutes>,
+        children: [
+            {
+                path: 'myParcels',
+                Component: MyParcels
             }
         ]
     }
