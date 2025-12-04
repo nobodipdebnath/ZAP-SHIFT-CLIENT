@@ -11,6 +11,11 @@ import ErrorPage from "../Pages/ErrorPage";
 import PrivetRoutes from "./PrivetRoutes";
 import SandAParcel from "../Pages/SandAParcel";
 import AboutPage from "../Pages/AboutPage";
+import AboutLayout from "../Layout/AboutLayout";
+import Story from "../components/About/Story";
+import Mission from "../components/About/Mission";
+import Success from "../components/About/Success";
+import Team from "../components/About/Team";
 
 const router = createBrowserRouter([
     {
@@ -36,11 +41,23 @@ const router = createBrowserRouter([
             },
             {
                 path: 'about',
-                Component: AboutPage,
+                Component: AboutLayout,
                 children: [
                     {
-                        path: 'about',
-                        element: <p>Nobodip</p>
+                        index: true,
+                        Component: Story
+                    },
+                    {
+                        path: '/about/mission',
+                        Component: Mission
+                    },
+                    {
+                        path: '/about/success',
+                        Component: Success
+                    },
+                    {
+                        path: '/about/team',
+                        Component: Team
                     }
                 ]
             },
