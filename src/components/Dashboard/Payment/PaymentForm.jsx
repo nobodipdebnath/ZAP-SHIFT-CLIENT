@@ -47,6 +47,7 @@ const PaymentForm = () => {
   if (isLoading) return <Loading />;
 
   const amount = parcelInfo.cost;
+  const amountInCents = amount * 100;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,6 +78,31 @@ const PaymentForm = () => {
       console.log("Payment method:", paymentMethod);
       // এখানে paymentIntent backend এ create করে confirm করতে হবে
     }
+    const res = await axiosSecure.post('/create-payment-intent', {
+        amountInCents,
+        id
+      })
+
+      const clientSecret = res.data.clientSecret;
+
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: elements.getElement(CardElement),
+            billing_details: {
+                name: 'Nobodip Debnath'
+            }
+        }
+      })
+
+      if(result.error){
+        console.log(result.error.message);
+      } else{
+        if(result.paymentIntent.status === 'succeeded'){
+            console.log('Payment Succeeded');
+            console.log(result);
+        }
+      }
+      console.log( 'res in client',res);
   };
 
   return (
