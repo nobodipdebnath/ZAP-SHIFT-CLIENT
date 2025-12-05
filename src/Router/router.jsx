@@ -19,6 +19,8 @@ import Team from "../components/About/Team";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import MyParcels from "../components/Dashboard/MyParcels/MyParcels";
 import Payment from "../components/Dashboard/Payment/Payment";
+import PaymentHistory from "../components/Dashboard/PaymentHistory/PaymentHistory";
+import TrackParcel from "../components/Dashboard/TrackParcel/TrackParcel";
 
 const router = createBrowserRouter([
     {
@@ -102,6 +104,14 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 Component: Payment
+            },
+            {
+                path: 'paymentHistory',
+                Component: PaymentHistory
+            },
+            {
+                path: 'trackParcel',
+                Component: TrackParcel
             }
         ]
     }

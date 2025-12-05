@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../Shared/Loading";
@@ -26,7 +26,7 @@ const CARD_ELEMENT_OPTIONS = {
       iconColor: "#991b1b",
     },
   },
-  hidePostalCode: true,
+  hidePostalCode: false,
 };
 
 const PaymentForm = () => {
@@ -35,6 +35,7 @@ const PaymentForm = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
@@ -104,13 +105,25 @@ const PaymentForm = () => {
         if (result.paymentIntent.status === "succeeded") {
           console.log("Payment Succeeded");
           console.log(result);
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `${amount} taka Payment Succeeded`,
-            showConfirmButton: false,
-            timer: 1500
+
+          const paymentData = {
+            id,
+            email: user.email,
+            amount,
+            transactionId: result.paymentIntent.id,
+            paymentMethod: result.paymentIntent.payment_method_types,
+          }
+          const paymentRes = await axiosSecure.post('/payments', paymentData);
+          if(paymentRes.data.insertedId){
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: `${amount} taka Payment Succeeded`,
+              showConfirmButton: false,
+              timer: 1500
             });
+            navigate('/dashboard/myParcels')
+          }
         }
       }
     }
