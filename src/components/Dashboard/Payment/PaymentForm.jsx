@@ -40,15 +40,13 @@ const PaymentForm = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const { data: parcelInfo = {}, isLoading } = useQuery({
+  const { data: parcelInfo = {},} = useQuery({
     queryKey: ["parcel", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/parcels/${id}`);
       return res.data;
     },
   });
-
-  if (isLoading) return <Loading />;
 
   const amount = parcelInfo.cost;
   const amountInCents = amount * 100;

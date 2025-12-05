@@ -3,15 +3,29 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router';
+import useAxios from '../../Hooks/useAxios';
 
 const SocialLogin = () => {
     const {signInWithGoogle} = useAuth();
     const location = useLocation();
     const from = location.state?.from || '/';
     const navigate = useNavigate();
+    const axiosInstance = useAxios();
     const googleSignIn = () => {
         signInWithGoogle()
-        .then(result => {
+        .then(async (result) => {
+            const user = result.user;
+
+            const userInfo = {
+                email: user.email,
+                role: 'user',
+                created_at: new Date().toISOString(),
+                last_log_in: new Date().toISOString(),
+            }
+
+            const res = await axiosInstance.post('/users',userInfo);
+            console.log('User update in database',res.data);
+
             if(result.user){
                 Swal.fire({
                     position: "center",

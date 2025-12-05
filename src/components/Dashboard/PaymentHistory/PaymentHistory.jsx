@@ -12,7 +12,7 @@ const PaymentHistory = () => {
     const [search, setSearch] = useState("");
     const [sortType, setSortType] = useState(""); // amount/date
 
-    const { isLoading, data: payments = [] } = useQuery({
+    const { data: payments = [] } = useQuery({
         queryKey: ['payments', user.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/payments?email=${user.email}`);
@@ -20,7 +20,6 @@ const PaymentHistory = () => {
         }
     });
 
-    if (isLoading) return <Loading />;
 
     // ---- FILTER ----
     const filtered = payments.filter((p) =>

@@ -56,8 +56,8 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/login')
             })
+            navigate('/', {replace: true})
             
         })
         .catch(error=> {

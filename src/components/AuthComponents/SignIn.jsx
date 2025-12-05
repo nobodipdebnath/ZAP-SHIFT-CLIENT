@@ -10,7 +10,7 @@ const SignIn = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const { logInUser, loading} = useAuth();
     const location = useLocation();
-    const form = location.state?.from || '/';
+    const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
     const onSubmit = data => {
@@ -33,7 +33,7 @@ const SignIn = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate(form);
+            navigate(from, {replace: true});
         })
         .catch(error => {
             Swal.fire({
