@@ -16,16 +16,16 @@ const SignIn = () => {
     const onSubmit = data => {
         logInUser(data.email, data.password)
         .then(result => {
-            if(!result.user?.emailVerified){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Please Verify your email !",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                return;
-            }
+            // if(!result.user?.emailVerified){
+            //     Swal.fire({
+            //         position: "center",
+            //         icon: "success",
+            //         title: "Please Verify your email !",
+            //         showConfirmButton: false,
+            //         timer: 1500
+            //     });
+            //     return;
+            // }
             Swal.fire({
                 position: "center",
                 icon: "success",

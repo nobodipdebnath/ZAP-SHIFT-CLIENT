@@ -11,6 +11,7 @@ import {
 } from "react-icons/hi";
 import { MdPending } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
+import { FaStudiovinari } from "react-icons/fa";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
@@ -45,6 +46,11 @@ const DashBoardLayout = () => {
       path: "/dashboard/activeRider",
       text: "Active Raider",
       icon: <RiMotorbikeFill className="text-xl" />,
+    },
+    {
+      path: "/dashboard/makeAdmin",
+      text: "Make Admin",
+      icon: <FaStudiovinari className="text-xl" />,
     },
     {
       path: "/dashboard/profile",
