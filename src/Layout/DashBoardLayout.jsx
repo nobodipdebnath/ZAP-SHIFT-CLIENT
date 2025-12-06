@@ -20,8 +20,20 @@ const DashBoardLayout = () => {
 
   const links = 
   <>
-    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text text-lg font-medium text-black-base"><HiHome className="text-xl"/> Home</li></Link>
-    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text text-lg font-medium text-black-base"><HiHome className="text-xl"/> Home</li></Link>
+    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text font-medium"><HiHome className="text-xl"/> Home</li></Link>
+    <Link to='/dashboard/myParcels'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiClipboardList className="text-xl" /> My Parcel</li></Link>
+    <Link to='/dashboard/paymentHistory'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiCreditCard className="text-xl" />Payment History</li></Link>
+    <Link to='/dashboard/trackParcel'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiLocationMarker className="text-xl" />Track Parcel</li></Link>
+
+    {
+      !authLoading && role === 'admin' &&
+      <>
+        <Link to='/dashboard/pendingRider'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><MdPending className="text-xl" />Pending Rider</li></Link>
+        <Link to='/dashboard/activeRider'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><RiMotorbikeFill className="text-xl" />Active Rider</li></Link>
+        <Link to='/dashboard/makeAdmin'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><FaStudiovinari className="text-xl" />Make Admin</li></Link>
+      </>
+    }
+    <Link to='/dashboard/profile'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiUserCircle className="text-xl" />Profile</li></Link>
   </>
 
   // console.log(user);
