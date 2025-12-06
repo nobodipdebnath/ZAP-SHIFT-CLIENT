@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import logo from "../assets/logo.png";
 import {
@@ -20,7 +20,8 @@ const DashBoardLayout = () => {
 
   const links = 
   <>
-
+    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text text-lg font-medium text-black-base"><HiHome className="text-xl"/> Home</li></Link>
+    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text text-lg font-medium text-black-base"><HiHome className="text-xl"/> Home</li></Link>
   </>
 
   // console.log(user);
