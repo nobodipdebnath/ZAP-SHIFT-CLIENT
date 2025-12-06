@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import logo from "../assets/logo.png";
-import { 
-  HiHome, 
-  HiClipboardList, 
-  HiCreditCard, 
-  HiLocationMarker, 
-  HiUserCircle 
+import {
+  HiHome,
+  HiClipboardList,
+  HiCreditCard,
+  HiLocationMarker,
+  HiUserCircle,
 } from "react-icons/hi";
 import { MdPending } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
@@ -16,7 +16,8 @@ import useUserRole from "../Hooks/useUserRole";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
-  const {role, authLoading} = useUserRole();
+  const { role, authLoading } = useUserRole();
+
   // console.log(user);
   const links = [
     {
@@ -127,7 +128,11 @@ const DashBoardLayout = () => {
                   className="py-2 px-5 border-input-text rounded-lg  w-full border"
                   key={idx}
                 >
-                  <li className="flex items-center gap-3"> {link.icon}{link.text}</li>
+                  <li className="flex items-center gap-3">
+                    {" "}
+                    {link.icon}
+                    {link.text}
+                  </li>
                 </Link>
               );
             })}
