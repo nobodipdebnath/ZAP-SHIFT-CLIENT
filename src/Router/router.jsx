@@ -25,6 +25,8 @@ import PendingRaider from "../components/Dashboard/PendingRaider/PendingRaider";
 import BeARaider from "../Pages/BeARaider";
 import ActiveRider from "../components/Dashboard/ActiveRider/ActiveRider";
 import MakeAdmin from "../components/Dashboard/MakeAdmin/MakeAdmin";
+import Dashboard from "../components/Dashboard/DashboardHome/Dashboard";
+import Profile from "../components/Dashboard/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -135,6 +137,14 @@ const router = createBrowserRouter([
             {
                 path: 'makeAdmin',
                 Component: MakeAdmin
+            },
+            {
+                path: 'home',
+                Component: Dashboard
+            },
+            {
+                path: 'profile',
+                Component: Profile
             }
         ]
     }
