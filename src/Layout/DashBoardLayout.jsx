@@ -18,49 +18,54 @@ const DashBoardLayout = () => {
   const { user } = useAuth();
   const { role, authLoading } = useUserRole();
 
+  const links = 
+  <>
+
+  </>
+
   // console.log(user);
-  const links = [
-    {
-      path: "/home",
-      text: "Home",
-      icon: <HiHome className="text-xl" />,
-    },
-    {
-      path: "/dashboard/myParcels",
-      text: "My Parcels",
-      icon: <HiClipboardList className="text-xl" />,
-    },
-    {
-      path: "/dashboard/paymentHistory",
-      text: "Payment History",
-      icon: <HiCreditCard className="text-xl" />,
-    },
-    {
-      path: "/dashboard/trackParcel",
-      text: "Track Parcel",
-      icon: <HiLocationMarker className="text-xl" />,
-    },
-    {
-      path: "/dashboard/pendingRider",
-      text: "Pending Raider",
-      icon: <MdPending className="text-xl" />,
-    },
-    {
-      path: "/dashboard/activeRider",
-      text: "Active Raider",
-      icon: <RiMotorbikeFill className="text-xl" />,
-    },
-    {
-      path: "/dashboard/makeAdmin",
-      text: "Make Admin",
-      icon: <FaStudiovinari className="text-xl" />,
-    },
-    {
-      path: "/dashboard/profile",
-      text: "Profile",
-      icon: <HiUserCircle className="text-xl" />,
-    },
-  ];
+  // const links = [
+  //   {
+  //     path: "/home",
+  //     text: "Home",
+  //     icon: <HiHome className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/myParcels",
+  //     text: "My Parcels",
+  //     icon: <HiClipboardList className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/paymentHistory",
+  //     text: "Payment History",
+  //     icon: <HiCreditCard className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/trackParcel",
+  //     text: "Track Parcel",
+  //     icon: <HiLocationMarker className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/pendingRider",
+  //     text: "Pending Raider",
+  //     icon: <MdPending className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/activeRider",
+  //     text: "Active Raider",
+  //     icon: <RiMotorbikeFill className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/makeAdmin",
+  //     text: "Make Admin",
+  //     icon: <FaStudiovinari className="text-xl" />,
+  //   },
+  //   {
+  //     path: "/dashboard/profile",
+  //     text: "Profile",
+  //     icon: <HiUserCircle className="text-xl" />,
+  //   },
+  // ];
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -121,7 +126,7 @@ const DashBoardLayout = () => {
             </Link>
           </div>
           <div className="flex flex-col gap-4 mt-8">
-            {links.map((link, idx) => {
+            {/* {links.map((link, idx) => {
               return (
                 <Link
                   to={link.path}
@@ -135,7 +140,8 @@ const DashBoardLayout = () => {
                   </li>
                 </Link>
               );
-            })}
+            })} */}
+            {links}
           </div>
         </ul>
       </div>
