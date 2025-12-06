@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../../Hooks/useAuth';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 
 const MyParcels = () => {
     const { user } = useAuth();
@@ -16,6 +16,8 @@ const MyParcels = () => {
             return res.data;
         }
     })
+
+    console.log(parcels);
 
     // console.log(parcels);
 

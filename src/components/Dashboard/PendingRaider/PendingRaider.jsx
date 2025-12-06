@@ -2,8 +2,8 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { FaEye, FaCheck, FaTimes } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../Shared/Loading";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PendingRaiders = () => {
     const [selectedRider, setSelectedRider] = useState(null);

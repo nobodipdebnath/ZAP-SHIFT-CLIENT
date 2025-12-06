@@ -12,9 +12,11 @@ import {
 import { MdPending } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { FaStudiovinari } from "react-icons/fa";
+import useUserRole from "../Hooks/useUserRole";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
+  const {role, authLoading} = useUserRole();
   // console.log(user);
   const links = [
     {

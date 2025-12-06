@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import useAuth from '../../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Loading from '../../Shared/Loading';
 import { Search, ArrowUpDown } from "lucide-react";
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const [search, setSearch] = useState("");
+    const [search] = useState("");
     const [sortType, setSortType] = useState(""); // amount/date
 
     const { data: payments = [] } = useQuery({
