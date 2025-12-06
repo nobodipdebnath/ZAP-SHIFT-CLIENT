@@ -12,7 +12,7 @@ const NavBar = () => {
         <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/coverage'>Coverage</NavLink></li>
         <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/about'>About Us</NavLink></li>
         <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/pricing'>Pricing</NavLink></li>
-        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/ride'>Be a Rider</NavLink></li>
+        <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/beARider'>Be a Rider</NavLink></li>
         {
             user && <>
                 <li className='px-5 py-3 rounded-full duration-500'><NavLink to='/dashboard'>Dashboard</NavLink></li>

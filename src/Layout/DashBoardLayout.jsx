@@ -9,6 +9,8 @@ import {
   HiLocationMarker, 
   HiUserCircle 
 } from "react-icons/hi";
+import { MdPending } from "react-icons/md";
+import { RiMotorbikeFill } from "react-icons/ri";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
@@ -33,6 +35,16 @@ const DashBoardLayout = () => {
       path: "/dashboard/trackParcel",
       text: "Track Parcel",
       icon: <HiLocationMarker className="text-xl" />,
+    },
+    {
+      path: "/dashboard/pendingRider",
+      text: "Pending Raider",
+      icon: <MdPending className="text-xl" />,
+    },
+    {
+      path: "/dashboard/activeRider",
+      text: "Active Raider",
+      icon: <RiMotorbikeFill className="text-xl" />,
     },
     {
       path: "/dashboard/profile",
