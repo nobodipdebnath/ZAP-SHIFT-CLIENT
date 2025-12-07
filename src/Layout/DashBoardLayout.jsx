@@ -16,6 +16,7 @@ import useUserRole from "../Hooks/useUserRole";
 import { MdAssignmentTurnedIn } from "react-icons/md";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { GrCompliance } from "react-icons/gr";
+import { Wallet } from "lucide-react";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
@@ -81,7 +82,7 @@ const DashBoardLayout = () => {
         </>
       )}
       {/* Rider Link */}
-      {!authLoading && (role === "rider" || role === "admin") && (
+      {!authLoading && (role === "rider") && (
         <>
           <Link to="/dashboard/pendingDelivery">
             <li className="flex items-center gap-3 w-full py-3 px-5 border border-input-text rounded-lg font-medium hover:bg-gray-100 transition duration-300 cursor-pointer">
@@ -93,6 +94,12 @@ const DashBoardLayout = () => {
             <li className="flex items-center gap-3 w-full py-3 px-5 border border-input-text rounded-lg font-medium hover:bg-gray-100 transition duration-300 cursor-pointer">
               <GrCompliance className="text-xl" />
               <span>Completed Delivery</span>
+            </li>
+          </Link>
+          <Link to="/dashboard/myEarnings">
+            <li className="flex items-center gap-3 w-full py-3 px-5 border border-input-text rounded-lg font-medium hover:bg-gray-100 transition duration-300 cursor-pointer">
+              <Wallet className="text-xl" />
+              <span>My Earnings</span>
             </li>
           </Link>
         </>
@@ -210,7 +217,7 @@ const DashBoardLayout = () => {
               <img src={logo} alt="" />
             </Link>
           </div>
-          <div className="flex flex-col gap-4 mt-8">
+          <div className="flex flex-col gap-2 mt-8">
             {/* {links.map((link, idx) => {
               return (
                 <Link
