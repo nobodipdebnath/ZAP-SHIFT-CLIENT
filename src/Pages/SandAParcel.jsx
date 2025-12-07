@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
-import { useLoaderData } from "react-router";
-import useAuth from "../Hooks/useAuth";
+import { useLoaderData, useNavigate } from "react-router";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
+import useTrackingLogger from "../Layout/useTrackingLogger";
 
 const generateTrackingID = () => {
     const date = new Date();
@@ -20,7 +21,8 @@ const SendParcel = () => {
     } = useForm();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const {logTracking} = useTrackingLogger()
 
     const serviceCenters = useLoaderData();
     // Extract unique regions
@@ -116,14 +118,14 @@ const SendParcel = () => {
                                 showConfirmButton: false,
                             });
 
-                            // await logTracking({
-                            //     tracking_id: parcelData.tracking_id,
-                            //     status: "parcel_created",
-                            //     details: `Created by ${user.displayName}`,
-                            //     updated_by: user.email,
-                            // })
+                            await logTracking({
+                                tracking_id: parcelData.tracking_id,
+                                status: "parcel_created",
+                                details: `Created by ${user.displayName}`,
+                                updated_by: user.email,
+                            })
 
-                            // navigate('/dashboard/myParcels')
+                            navigate('/dashboard/myParcels')
                         }
                     })
 
