@@ -30,6 +30,9 @@ import Profile from "../components/Dashboard/Profile/Profile";
 import Forbidden from "../components/Dashboard/Forbidden/Forbidden";
 import AdminRoute from "./AdminRoute";
 import AssignRider from "../components/Dashboard/AssignRider/AssignRider";
+import PendingDeliveries from "../components/Dashboard/PendingDeliveries/PendingDeliveries";
+import RiderRoute from "./RiderRoute";
+import CompletedDeliveries from "../components/Dashboard/CompletedDeliveries/CompletedDeliveries";
 
 const router = createBrowserRouter([
     {
@@ -164,6 +167,18 @@ const router = createBrowserRouter([
                 element: <AdminRoute>
                     <AssignRider></AssignRider>
                 </AdminRoute>
+            },
+            {
+                path: 'pendingDelivery',
+                element: <RiderRoute>
+                    <PendingDeliveries></PendingDeliveries>
+                </RiderRoute>
+            },
+            {
+                path: 'completedDelivery',
+                element: <RiderRoute>
+                    <CompletedDeliveries></CompletedDeliveries>
+                </RiderRoute>
             }
         ]
     }

@@ -22,8 +22,17 @@ const MyParcels = () => {
     // console.log(parcels);
 
     const handleView = (id) => {
-        console.log("View parcel", id);
-        // You could open a modal or navigate to a detail page
+        Swal.fire({
+            position: 'top-center',
+            icon: 'error',
+            title: 'Access Restricted',
+            text: 'This service is only available for premium delivery partners.',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            toast: true,
+            iconColor: '#ef4444'
+        });
     };
 
     const handlePay = (id) => {
@@ -82,6 +91,7 @@ const MyParcels = () => {
                         <th>Created At</th>
                         <th>Cost</th>
                         <th>Payment</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -103,6 +113,7 @@ const MyParcels = () => {
                                     {parcel.payment_status}
                                 </span>
                             </td>
+                            <td><span className='py-1 px-2 bg-green-400 rounded-lg'>{parcel.delivery_status}</span></td>
                             <td className="space-x-2">
                                 <button
                                     onClick={() => handleView(parcel._id)}
