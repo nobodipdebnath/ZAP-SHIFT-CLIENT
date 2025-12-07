@@ -20,7 +20,7 @@ const DashBoardLayout = () => {
 
   const links = 
   <>
-    <Link to='/dashboard/home'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text font-medium"><HiHome className="text-xl"/> Home</li></Link>
+    <Link to='/dashboard'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text font-medium"><HiHome className="text-xl"/> Home</li></Link>
     <Link to='/dashboard/myParcels'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiClipboardList className="text-xl" /> My Parcel</li></Link>
     <Link to='/dashboard/paymentHistory'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiCreditCard className="text-xl" />Payment History</li></Link>
     <Link to='/dashboard/trackParcel'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiLocationMarker className="text-xl" />Track Parcel</li></Link>

@@ -27,6 +27,8 @@ import ActiveRider from "../components/Dashboard/ActiveRider/ActiveRider";
 import MakeAdmin from "../components/Dashboard/MakeAdmin/MakeAdmin";
 import Dashboard from "../components/Dashboard/DashboardHome/Dashboard";
 import Profile from "../components/Dashboard/Profile/Profile";
+import Forbidden from "../components/Dashboard/Forbidden/Forbidden";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
                 path:'coverage',
                 Component: Coverage,
                 loader: ()=> fetch('./warehouses.json')
+            },
+            {
+                path: 'forbidden',
+                Component: Forbidden
             },
             {
                 path: 'sendParcel',
@@ -128,24 +134,30 @@ const router = createBrowserRouter([
             },
             {
                 path: 'pendingRider',
-                Component: PendingRaider
+                element: <AdminRoute>
+                    <PendingRaider></PendingRaider>
+                </AdminRoute>
             },
             {
                 path: 'activeRider',
-                Component: ActiveRider
+                element: <AdminRoute>
+                    <ActiveRider></ActiveRider>
+                </AdminRoute>
             },
             {
                 path: 'makeAdmin',
-                Component: MakeAdmin
+                element: <AdminRoute>
+                    <MakeAdmin></MakeAdmin>
+                </AdminRoute>
             },
             {
-                path: 'home',
+                index: true,
                 Component: Dashboard
             },
             {
                 path: 'profile',
                 Component: Profile
-            }
+            },
         ]
     }
 ]);
