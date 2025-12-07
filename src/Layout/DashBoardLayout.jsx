@@ -13,6 +13,7 @@ import { MdPending } from "react-icons/md";
 import { RiMotorbikeFill } from "react-icons/ri";
 import { FaStudiovinari } from "react-icons/fa";
 import useUserRole from "../Hooks/useUserRole";
+import { MdAssignmentTurnedIn } from "react-icons/md";
 
 const DashBoardLayout = () => {
   const { user } = useAuth();
@@ -21,18 +22,26 @@ const DashBoardLayout = () => {
   const links = 
   <>
     <Link to='/dashboard'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text font-medium"><HiHome className="text-xl"/> Home</li></Link>
+    
     <Link to='/dashboard/myParcels'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiClipboardList className="text-xl" /> My Parcel</li></Link>
+
     <Link to='/dashboard/paymentHistory'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiCreditCard className="text-xl" />Payment History</li></Link>
+
     <Link to='/dashboard/trackParcel'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiLocationMarker className="text-xl" />Track Parcel</li></Link>
 
     {
       !authLoading && role === 'admin' &&
       <>
         <Link to='/dashboard/pendingRider'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><MdPending className="text-xl" />Pending Rider</li></Link>
+
         <Link to='/dashboard/activeRider'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><RiMotorbikeFill className="text-xl" />Active Rider</li></Link>
+
         <Link to='/dashboard/makeAdmin'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><FaStudiovinari className="text-xl" />Make Admin</li></Link>
+
+        <Link to='/dashboard/assignRider'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><MdAssignmentTurnedIn className="text-xl" />Assign Rider</li></Link>
       </>
     }
+
     <Link to='/dashboard/profile'><li className="flex items-center hover:bg-gray-100 duration-500 gap-2 w-full py-2 border rounded-lg px-5 border-input-text  font-medium"><HiUserCircle className="text-xl" />Profile</li></Link>
   </>
 

@@ -29,6 +29,7 @@ import Dashboard from "../components/Dashboard/DashboardHome/Dashboard";
 import Profile from "../components/Dashboard/Profile/Profile";
 import Forbidden from "../components/Dashboard/Forbidden/Forbidden";
 import AdminRoute from "./AdminRoute";
+import AssignRider from "../components/Dashboard/AssignRider/AssignRider";
 
 const router = createBrowserRouter([
     {
@@ -158,6 +159,12 @@ const router = createBrowserRouter([
                 path: 'profile',
                 Component: Profile
             },
+            {
+                path: 'assignRider',
+                element: <AdminRoute>
+                    <AssignRider></AssignRider>
+                </AdminRoute>
+            }
         ]
     }
 ]);
