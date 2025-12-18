@@ -25,7 +25,7 @@ import PendingRaider from "../components/Dashboard/PendingRaider/PendingRaider";
 import BeARaider from "../Pages/BeARaider";
 import ActiveRider from "../components/Dashboard/ActiveRider/ActiveRider";
 import MakeAdmin from "../components/Dashboard/MakeAdmin/MakeAdmin";
-import Dashboard from "../components/Dashboard/DashboardHome/Dashboard";
+import Dashboard from "../components/Dashboard/DashboardHome/DashboardHome";
 import Profile from "../components/Dashboard/Profile/Profile";
 import Forbidden from "../components/Dashboard/Forbidden/Forbidden";
 import AdminRoute from "./AdminRoute";
