@@ -1,6 +1,7 @@
 import React from 'react';
 import support1 from '../../assets/live-tracking.png'
 import support2 from '../../assets/safe-delivery.png'
+import support3 from '../../assets/safe-delivery.png'
 
 const Support = () => {
     const supports = [
@@ -19,8 +20,8 @@ const Support = () => {
         {
             id: 3,
             title: "24/7 Call Center Support",
-            description: "Our dedicated support team is available around the clock to assist you with any questions, updates, or delivery concerns—anytime you need us.",
-            image: support2
+            description: "Our dedicated support team is available around the clock to assist you with any questions, updates, or delivery concerns—anytime you need us we have provide 24 service ",
+            image: support3
         },
     ]
     return (

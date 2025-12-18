@@ -6,6 +6,7 @@ import Loading from "../../Shared/Loading";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import useTrackingLogger from "../../../Layout/useTrackingLogger";
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -35,6 +36,7 @@ const PaymentForm = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const{logTracking} = useTrackingLogger();
   const navigate = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -120,6 +122,14 @@ const PaymentForm = () => {
               showConfirmButton: false,
               timer: 1500
             });
+            await logTracking(
+              {
+                tracking_id: parcelInfo.tracking_id,
+                status: 'Payment_done',
+                derails: `Paid by ${user.displayName}`,
+                updated_by: user.email
+              }
+            )
             navigate('/dashboard/myParcels')
           }
         }
