@@ -61,8 +61,8 @@ const CompletedDeliveries = () => {
     };
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-bold mb-4">Completed Deliveries</h2>
+        <div className="p-6 bg-white rounded-3xl">
+            <h2 className="text-3xl text-green-blue font-bold mb-4">Completed Deliveries</h2>
             {isLoading ? (
                 <p>Loading...</p>
             ) : parcels.length === 0 ? (
@@ -104,7 +104,7 @@ const CompletedDeliveries = () => {
                                                 className="btn btn-sm btn-warning"
                                                 onClick={() => handleCashout(parcel._id)}
                                             >
-                                                Cashout
+                                                Cash Out
                                             </button>
                                         )}
                                     </td>
