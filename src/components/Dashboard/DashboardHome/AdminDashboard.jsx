@@ -90,7 +90,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* pie chart */}
-            <div className="card bg-base-100 shadow-md p-4">
+            <div className="card bg-base-100 shadow-md mt-8 p-4">
                 <h2 className="text-xl font-bold mb-4">Delivery Status Breakdown</h2>
                 <ResponsiveContainer width="100%" height={300}>
                     <PieChart>

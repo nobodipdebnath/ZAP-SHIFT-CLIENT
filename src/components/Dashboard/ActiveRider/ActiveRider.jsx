@@ -45,8 +45,8 @@ const ActiveRiders = () => {
   );
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Active Riders</h2>
+    <div className="p-6 bg-white rounded-3xl">
+      <h2 className="text-3xl font-bold text-green-blue mb-4">Active Riders</h2>
 
       {/* 🔍 Search Field */}
       <div className="mb-4 flex items-center gap-2">
@@ -54,7 +54,7 @@ const ActiveRiders = () => {
         <input
           type="text"
           placeholder="Search by name"
-          className="input input-bordered w-full max-w-md"
+          className="py-3 px-5 border rounded-lg outline-none border-input-text max-w-xl placeholder:text-input-text w-full"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -70,6 +70,7 @@ const ActiveRiders = () => {
           <table className="table table-zebra w-full">
             <thead>
               <tr>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -83,6 +84,7 @@ const ActiveRiders = () => {
             <tbody>
               {filteredRiders.map((rider) => (
                 <tr key={rider._id}>
+                  <td>{rider.photoURl}</td>
                   <td>{rider.name}</td>
                   <td>{rider.email}</td>
                   <td>{rider.phone}</td>

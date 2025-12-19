@@ -49,8 +49,8 @@ const PendingRaiders = () => {
     };
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Pending Rider Applications</h2>
+        <div className="p-6 bg-white rounded-3xl">
+            <h2 className="text-3xl text-green-blue font-bold  mb-4">Pending Rider Applications</h2>
 
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
