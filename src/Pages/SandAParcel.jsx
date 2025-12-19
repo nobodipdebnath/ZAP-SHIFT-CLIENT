@@ -103,8 +103,9 @@ const SendParcel = () => {
                     creation_date: new Date().toISOString(),
                     tracking_id: tracking_id,
                 };
+                navigate('/dashboard/myParcels')
 
-                console.log("Ready for payment:", parcelData);
+                // console.log("Ready for payment:", parcelData);
 
                 axiosSecure.post('/parcels', parcelData)
                     .then(async (result) => {
@@ -124,8 +125,6 @@ const SendParcel = () => {
                                 details: `Created by ${user.displayName}`,
                                 updated_by: user.email,
                             })
-
-                            navigate('/dashboard/myParcels')
                         }
                     })
 
@@ -206,7 +205,7 @@ const SendParcel = () => {
                             <div className="grid grid-cols-2 gap-8">
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Name</label>
-                                    <input {...register("sender_name", { required: true })} className=" py-2 px-3 border border-input-text rounded-lg placeholder:text-input-text outline-none w-full" placeholder="Name" />
+                                    <input {...register("sender_name", { required: true })} className=" py-2 px-3 border border-input-text rounded-lg placeholder:text-input-text outline-none w-full" value={user.displayName} placeholder="Name" />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Contact Number</label>
