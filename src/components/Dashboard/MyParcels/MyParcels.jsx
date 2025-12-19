@@ -3,6 +3,9 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { FaEye } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+import { FaCreditCard } from "react-icons/fa";
 
 const MyParcels = () => {
   const { user } = useAuth();
@@ -116,23 +119,23 @@ const MyParcels = () => {
               <td className="space-x-2">
                 <button
                   onClick={() => handleView(parcel._id)}
-                  className="btn btn-xs btn-outline"
+                  className="p-3 bg-blue-400 rounded-lg cursor-pointer"
                 >
-                  View
+                  <FaEye className="text-base "/>
                 </button>
                 {parcel.payment_status === "unpaid" && (
                   <button
                     onClick={() => handlePay(parcel._id)}
-                    className="btn btn-xs btn-primary text-black"
+                    className="p-3 bg-green-400 rounded-lg cursor-pointer"
                   >
-                    Pay
+                    <FaCreditCard className="text-base "></FaCreditCard>
                   </button>
                 )}
                 <button
                   onClick={() => handleDelete(parcel._id)}
-                  className="btn btn-xs btn-error"
+                  className="p-3 bg-red-400 rounded-lg cursor-pointer"
                 >
-                  Delete
+                  <FaTrash className="text-base"></FaTrash>
                 </button>
               </td>
             </tr>

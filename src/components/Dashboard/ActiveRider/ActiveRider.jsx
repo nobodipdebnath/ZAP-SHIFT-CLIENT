@@ -70,7 +70,6 @@ const ActiveRiders = () => {
           <table className="table table-zebra w-full">
             <thead>
               <tr>
-                <th>Photo</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -84,7 +83,6 @@ const ActiveRiders = () => {
             <tbody>
               {filteredRiders.map((rider) => (
                 <tr key={rider._id}>
-                  <td>{rider.photoURl}</td>
                   <td>{rider.name}</td>
                   <td>{rider.email}</td>
                   <td>{rider.phone}</td>

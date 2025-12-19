@@ -81,8 +81,8 @@ const AssignRider = () => {
     };
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-bold mb-4">Assign Rider to Parcels</h2>
+        <div className="p-6 bg-white rounded-3xl">
+            <h2 className="text-3xl text-green-blue font-bold mb-4">Assign Rider to Parcels</h2>
 
             {isLoading ? (
                 <p>Loading parcels...</p>
@@ -116,7 +116,7 @@ const AssignRider = () => {
                                     <td>
                                         <button
                                             onClick={() => openAssignModal(parcel)}
-                                            className="btn btn-sm btn-primary text-black">
+                                            className="btn btn-sm bg-green-400 text-black">
                                             <FaMotorcycle className="inline-block mr-1" />
                                             Assign Rider
                                         </button>

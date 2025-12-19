@@ -195,10 +195,8 @@ const DashBoardLayout = () => {
                 <img src={logo} alt="" />
               </Link>
             </div>
-            <div>
-              <h1 className="text-3xl font-extrabold text-green-blue">
-                {user.displayName}
-              </h1>
+            <div className="flex items-center gap-2 ">
+              <img className="h-14 w-14 rounded-full border-4 border-green-400" src={user.photoURL} alt="" />
             </div>
           </div>
           <Outlet></Outlet>

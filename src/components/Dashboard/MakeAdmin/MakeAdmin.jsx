@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { FaSearch, FaUserShield, FaUserTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loading from "../../Shared/Loading";
 
 const MakeAdmin = () => {
     const axiosSecure = useAxiosSecure();
@@ -53,21 +54,21 @@ const MakeAdmin = () => {
     };
 
     return (
-        <div className="p-6">
+        <div className="p-6 bg-white rounded-3xl">
             <h2 className="text-2xl font-semibold mb-4">Make Admin</h2>
 
             <div className="flex gap-2 mb-6 items-center">
                 <FaSearch />
                 <input
                     type="text"
-                    className="input input-bordered w-full max-w-md"
+                    className="py-2.5 px-5 border border-input-text rounded-lg outline-none placeholder:text-input-text w-full max-w-md"
                     placeholder="Search user by email"
                     value={emailQuery}
                     onChange={(e) => setEmailQuery(e.target.value)}
                 />
             </div>
 
-            {isFetching && <p>Loading users...</p>}
+            {isFetching && <Loading></Loading>}
 
             {!isFetching && users.length === 0 && emailQuery && (
                 <p className="text-gray-500">No users found.</p>
@@ -100,7 +101,7 @@ const MakeAdmin = () => {
                                     <td>
                                         <button
                                             onClick={() => handleRoleChange(u._id, u.role || "user")}
-                                            className={`btn btn-sm text-black ${u.role === "admin" ? "btn-error" : "btn-primary"
+                                            className={`btn btn-sm text-black ${u.role === "admin" ? "bg-red-400" : "bg-green-400"
                                                 }`}
                                         >
                                             {u.role === "admin" ? (
