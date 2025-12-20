@@ -133,10 +133,10 @@ const SendParcel = () => {
     };
 
     return (
-        <div className="py-20 px-28 bg-white rounded-4xl my-8">
+        <div className="lg:py-20 py-8 px-5 lg:px-28 bg-white rounded-4xl my-8">
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Heading */}
-                <h1 className="text-[56px] font-extrabold  text-green-blue">Add Parcel</h1>
+                <h1 className="lg:text-[56px] text-5xl font-extrabold  text-green-blue">Add Parcel</h1>
                 <hr className="text-gray-400 my-6" />
 
                 {/* Parcel Info */}
@@ -145,7 +145,7 @@ const SendParcel = () => {
                     <div className="">
                         {/* Type */}
                         <div className="mt-6">
-                            <div className="flex gap-4">
+                            <div className="flex flex-col md:flex-row gap-4">
                                 <label className="flex items-center text-base font-semibold text-green-blue gap-2">
                                     <input
                                         type="radio"
@@ -167,7 +167,7 @@ const SendParcel = () => {
                             </div>
                             {errors.type && <p className="text-red-500 text-sm">Type is required</p>}
                         </div>
-                        <div className="grid mt-7.5 grid-cols-2 gap-8">
+                        <div className="grid mt-7.5 md:grid-cols-2 gap-4 md:gap-8">
                             <div className="flex flex-col gap-2">
                                 <label className="text-[#0F172A]">Parcel Name</label>
                                 <input
@@ -202,7 +202,7 @@ const SendParcel = () => {
                     <div className="space-y-4">
                         <h3 className="text-lg font-extrabold text-green-blue">Sender Info</h3>
                         <div className="grid grid-cols-1 gap-4">
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="grid md:grid-cols-2 gap-4 md:gap-8">
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Name</label>
                                     <input {...register("sender_name", { required: true })} className=" py-2 px-3 border border-input-text rounded-lg placeholder:text-input-text outline-none w-full" value={user.displayName} placeholder="Name" />
@@ -212,7 +212,7 @@ const SendParcel = () => {
                                     <input {...register("sender_contact", { required: true })} className=" py-2 px-3 border border-input-text rounded-lg placeholder:text-input-text outline-none w-full" placeholder="Contact" />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="grid md:grid-cols-2 gap-4 md:gap-8">
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Your Region</label>
                                     <select {...register("sender_region", { required: true })} className="px-3 select outline-none py-2 border border-input-text rounded-lg  w-full">
@@ -247,7 +247,7 @@ const SendParcel = () => {
                     <div className="space-y-4">
                         <h3 className="text-lg font-extrabold text-green-blue">Receiver Info</h3>
                         <div className="grid grid-cols-1 gap-4">
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="grid md:grid-cols-2 gap-4 md:gap-8">
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Name</label>
                                     <input {...register("receiver_name", { required: true })} className="py-2 px-3 border border-input-text rounded-lg outline-none w-full" placeholder="Name" />
@@ -257,7 +257,7 @@ const SendParcel = () => {
                                     <input {...register("receiver_contact", { required: true })} className="py-2 px-3 border border-input-text rounded-lg outline-none w-full" placeholder="Contact" />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="grid md:grid-cols-2 gap-4 md:gap-8">
                                 <div className="flex flex-col gap-2">
                                     <label className="font-medium text-input-label text-base">Receiver Region</label>
                                     <select {...register("receiver_region", { required: true })} className="px-3 select outline-none py-2 border border-input-text rounded-lg  w-full">

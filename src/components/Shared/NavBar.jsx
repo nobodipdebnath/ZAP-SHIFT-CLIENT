@@ -66,7 +66,7 @@ const NavBar = () => {
                     <div className='flex items-center gap-4'>
                         <button
                             onClick={logOut}
-                            className='text-lg font-bold px-8 py-3 rounded-xl border hover:bg-[#CAEB66] duration-500'
+                            className='text-lg font-bold px-6 py-2.5 border-input-text text-green-blue cursor-pointer rounded-xl border hover:bg-[#CAEB66] duration-500'
                         >
                             Log Out
                         </button>
@@ -74,12 +74,12 @@ const NavBar = () => {
                     : 
                     <div className='flex items-center gap-4'>
                         <Link to='/login'>
-                            <button className='text-lg font-bold px-8 py-3 rounded-xl border hover:bg-[#CAEB66] duration-500'>
+                            <button className='text-lg font-bold px-6 py-2.5 border-input-text text-green-blue cursor-pointer rounded-xl border hover:bg-[#CAEB66] duration-500'>
                                 LogIn
                             </button>
                         </Link>
                         <Link to='/register'>
-                            <button className='text-lg font-bold px-8 py-3 rounded-xl border hover:bg-[#CAEB66] duration-500'>
+                            <button className='text-lg font-bold px-6 py-2.5 border-input-text text-green-blue cursor-pointer rounded-xl border hover:bg-[#CAEB66] duration-500'>
                                 Register
                             </button>
                         </Link>
