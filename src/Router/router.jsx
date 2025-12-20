@@ -34,6 +34,7 @@ import PendingDeliveries from "../components/Dashboard/PendingDeliveries/Pending
 import RiderRoute from "./RiderRoute";
 import CompletedDeliveries from "../components/Dashboard/CompletedDeliveries/CompletedDeliveries";
 import MyEarnings from "../components/Dashboard/MyEarnings/MyEarnings";
+import Pricing from "../Pages/Pricing";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +88,13 @@ const router = createBrowserRouter([
                 path: 'beARider',
                 element: <PrivetRoutes>
                     <BeARaider></BeARaider>
+                </PrivetRoutes>,
+                loader: () => fetch('./warehouses.json')
+            },
+            {
+                path: 'pricing',
+                element: <PrivetRoutes>
+                    <Pricing></Pricing>
                 </PrivetRoutes>,
                 loader: () => fetch('./warehouses.json')
             },
