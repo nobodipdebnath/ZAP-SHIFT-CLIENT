@@ -129,13 +129,13 @@ const Pricing = () => {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="bg-gray-400 cursor-pointer duration-500 hover:bg-gray-500 text-white w-1/2 md:w-[25%] px-6 py-2.5 rounded-lg font-semibold"
+                  className="bg-[#b7c787] cursor-pointer duration-500 hover:bg-gray-500 text-white w-1/2 md:w-[25%] px-6 py-2.5 rounded-lg font-semibold"
                 >
                   Reset
                 </button>
                 <button
                   type="submit"
-                  className="bg-green-500 cursor-pointer duration-500 w-1/2 md:w-[75%] hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold"
+                  className="bg-[#CAEB66] cursor-pointer duration-500 w-1/2 md:w-[75%] hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold"
                 >
                   Calculate
                 </button>
