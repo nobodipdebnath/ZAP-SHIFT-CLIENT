@@ -92,7 +92,7 @@ export default function AdminDashboard() {
             {/* pie chart */}
             <div className="card bg-base-100 shadow-md mt-8 p-4">
                 <h2 className="text-xl font-bold mb-4">Delivery Status Breakdown</h2>
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="100%" height={500}>
                     <PieChart>
                         <Pie
                             data={processedPieData}
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
                             nameKey="name"
                             cx="50%"
                             cy="50%"
-                            outerRadius={100}
+                            outerRadius={200}
                             label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
                         >
                             {processedPieData.map((entry) => (
