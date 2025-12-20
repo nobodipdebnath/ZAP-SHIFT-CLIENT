@@ -117,28 +117,28 @@ const NavBar = () => {
                     </button>
                 </div>
 
-                <ul className="mt-6 space-y-4 text-lg font-medium">
+                <ul className="mt-6 space-y-2 text-lg  font-medium">
                     {links}
                 </ul>
 
-                <div className="mt-8 space-y-3">
+                <div className="mt-4 space-y-3">
                     {
                         user ? (
                             <button
                                 onClick={logOut}
-                                className="w-full py-2 border rounded-lg font-semibold"
+                                className="w-full font-semibold text-green-blue py-2 border rounded-lg border-input-text"
                             >
                                 Log Out
                             </button>
                         ) : (
                             <>
                                 <Link to="/login" onClick={() => setOpen(false)}>
-                                    <button className="w-full py-2 border rounded-lg">
+                                    <button className="w-full font-semibold border-input-text text-green-blue py-2 border rounded-lg">
                                         Login
                                     </button>
                                 </Link>
                                 <Link to="/register" onClick={() => setOpen(false)}>
-                                    <button className="w-full py-2 border rounded-lg">
+                                    <button className="w-full mt-4 font-semibold border-input-text text-green-blue py-2 border rounded-lg">
                                         Register
                                     </button>
                                 </Link>

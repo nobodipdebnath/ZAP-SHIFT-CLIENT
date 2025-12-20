@@ -5,10 +5,10 @@ import logo from '../assets/logo.png'
 
 const AuthLayout = () => {
     return (
-        <div className='grid grid-cols-2 h-screen'>
+        <div className='grid md:grid-cols-2 h-screen'>
             <div className='bg-white'>
                 <Link to='/'><img className='m-14' src={logo} alt="" /></Link>
-                <div className='mt-14 mx-[20%]'>
+                <div className='mt-14 mx-5 lg:mx-[20%]'>
                     <Outlet></Outlet>
                 </div>
             </div>
