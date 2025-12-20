@@ -23,14 +23,14 @@ const Coverage = () => {
     }
 
     return (
-        <div className='py-20 px-27 bg-white rounded-4xl mt-8 mb-25'>
-            <h2 className="text-[56px] font-extrabold text-green-blue">We are available in 64 districts</h2>
+        <div className='lg:py-20 py-8 px-5 lg:px-27 bg-white rounded-4xl mt-8 mb-25'>
+            <h2 className="lg:text-[56px] text-5xl text-center md:text-start leading-[110%] font-extrabold text-green-blue">We are available in 64 districts</h2>
             <div className='mt-8 mb-12'>
                 {/* search  */}
                 <form onSubmit={handleSearch}>
                     <div className='relative'>
-                        <input className='py-4 px-10 bg-gray-200  rounded-full w-1/2 outline-none' type="text" placeholder='Search' name="location"/>
-                        <button className='py-3 px-8 rounded-full bg-[#c0dd67] text-base font-semibold cursor-pointer absolute right-[50.4%] bottom-1'>Search</button>
+                        <input className='py-4 px-10 bg-gray-200  rounded-full w-full lg:w-1/2 outline-none' type="text" placeholder='Search' name="location"/>
+                        <button className='py-3 px-8 rounded-full bg-[#c0dd67] text-base font-semibold cursor-pointer absolute right-1 lg:right-[50.4%] bottom-1'>Search</button>
                     </div>
                 </form>
             </div>

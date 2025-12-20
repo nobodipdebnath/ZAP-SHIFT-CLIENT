@@ -57,8 +57,8 @@ const BeARider = () => {
     };
 
     return (
-        <div className="py-20 px-28 bg-white rounded-4xl my-8">
-            <h2 className="text-[56px] font-extrabold text-green-blue">Become a Rider</h2>
+        <div className="lg:py-20 py-8 lg:px-28 px-5 bg-white rounded-4xl my-8">
+            <h2 className="lg:text-[56px] text-5xl text-center md:text-start font-extrabold text-green-blue">Become a Rider</h2>
             <p className="max-w-3xl text-base text-black-base mt-4">Enjoy fast, reliable parcel delivery with real-time tracking and zero hassle. From personal packages to business shipments — we deliver on time, every time.</p>
             <hr className="text-gray-300 my-12" />
             <h2 className="text-[28px] font-extrabold text-green-blue">Tell us about yourself</h2>
