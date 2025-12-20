@@ -16,7 +16,7 @@ const Footer = () => {
         <li><NavLink to='/contact'>Contact</NavLink></li>
     </>
     return (
-        <div className='px-28 py-20 bg-dark-blue rounded-4xl'>
+        <div className='lg:px-28 px-5 py-8 lg:py-20 bg-dark-blue rounded-4xl'>
             <div className='flex items-center flex-col justify-center'>
                 <div>
                     <Link to='/'><img src={logo} alt="" /></Link>
@@ -26,12 +26,12 @@ const Footer = () => {
                 </div>
                 <div className='w-full border-t border-t-[#03464D] border-dashed'></div>
                 <div className='py-8'>
-                    <ul className='flex items-center gap-9 text-base font-medium text-white'>
+                    <ul className='flex-col flex md:flex-row items-center gap-4 lg:gap-9 text-base font-medium text-white'>
                         {links}
                     </ul>
                 </div>
                 <div className='w-full border-t border-t-[#03464D] border-dashed'></div>
-                <div className='flex gap-6 mt-8 items-center'>
+                <div className='flex gap-3 lg:gap-6 mt-8 items-center'>
                     <Link className='p-3 rounded-full bg-[#2489BE] shadow'>
                         <FaLinkedinIn></FaLinkedinIn>
                     </Link>

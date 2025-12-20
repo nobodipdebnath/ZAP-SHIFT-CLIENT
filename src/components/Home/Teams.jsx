@@ -13,7 +13,7 @@ const Teams = () => {
         <div className='mb-25'>
             <h1 className='text-center text-[40px] font-extrabold text-green-blue' >We've helped thousands of sales teams</h1>
             <Marquee >
-                <div className='mt-8 flex items-center gap-25'>
+                <div className='mt-8 flex items-center lg:gap-25 gap-8'>
                     <img src={brand1} alt="" />
                     <img src={brand2} alt="" />
                     <img src={brand3} alt="" />

@@ -29,8 +29,8 @@ const FAQSection = () => {
     },
   ];
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <h2 className="text-[40px] font-extrabold text-center text-green-blue">
+    <div className="max-w-5xl mx-auto lg:px-4 py-10">
+      <h2 className="lg:text-[40px] text-4xl font-extrabold text-center text-green-blue">
         Frequently Asked Questions (FAQ)
       </h2>
 
@@ -45,7 +45,7 @@ const FAQSection = () => {
       </div>
 
       <div className="text-center mt-6">
-        <button className="px-8 py-4 rounded-2xl font-semibold text-xl bg-[#CAEB66] text-green-blue cursor-pointer duration-500 hover:bg-[#a5c640]">
+        <button className="px-8 py-4 rounded-2xl font-semibold md:lg text-base lg:text-xl bg-[#CAEB66] text-green-blue cursor-pointer duration-500 hover:bg-[#a5c640]">
           See More FAQ’s
         </button>
       </div>
