@@ -31,11 +31,12 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+    <div className=" mx-auto">
+      <div className="relative rounded-2xl flex flex-col md:flex-row gap-8">
+        <img src="https://i.ibb.co.com/q3gmmh6N/banner2.png" alt="" />
         
         {/* Profile Image */}
-        <div className="flex justify-center">
+        <div className="flex absolute -bottom-15 left-10  justify-center">
           <img
             src={profile?.photo || user?.photoURL}
             alt="Profile"
@@ -44,7 +45,7 @@ const Profile = () => {
         </div>
 
         {/* Profile Info */}
-        <div className="flex-1 space-y-4">
+        {/* <div className="flex-1 space-y-4">
           <div>
             <p className="text-gray-500 text-sm">Full Name</p>
             <h3 className="text-xl font-semibold">
@@ -74,7 +75,7 @@ const Profile = () => {
           <button className="mt-6 px-6 py-2 rounded-lg bg-green-blue text-white font-semibold hover:opacity-90">
             Edit Profile
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
