@@ -32,10 +32,6 @@ const Profile = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-6">
-      <h2 className="text-center text-5xl font-extrabold my-10 text-green-blue">
-        Your Profile
-      </h2>
-
       <div className="bg-white shadow-xl rounded-2xl p-8 flex flex-col md:flex-row gap-8">
         
         {/* Profile Image */}
