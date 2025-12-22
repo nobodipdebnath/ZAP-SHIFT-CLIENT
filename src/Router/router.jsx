@@ -35,6 +35,9 @@ import RiderRoute from "./RiderRoute";
 import CompletedDeliveries from "../components/Dashboard/CompletedDeliveries/CompletedDeliveries";
 import MyEarnings from "../components/Dashboard/MyEarnings/MyEarnings";
 import Pricing from "../Pages/Pricing";
+import Services from "../Pages/Services";
+import Blogs from "../Pages/Blogs";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +64,18 @@ const router = createBrowserRouter([
                     <SandAParcel></SandAParcel>
                 </PrivetRoutes>,
                 loader: () => fetch('./warehouses.json')
+            },
+            {
+                path: 'services',
+                Component: Services
+            },
+            {
+                path: 'blog',
+                Component: Blogs
+            },
+            {
+                path: 'contact',
+                Component: Contact
             },
             {
                 path: 'about',
