@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Shared/Loading';
 import { Search, ArrowUpDown } from "lucide-react";
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const PaymentHistory = () => {
     const { user } = useAuth();
