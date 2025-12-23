@@ -46,7 +46,7 @@ const Contact = () => {
                 </div>
 
                 {/* Form */}
-                <div className='bg-white p-8 rounded-xl shadow-md'>
+                <div className='bg-white p-8 rounded-xl'>
                     <h2 className='text-3xl font-bold mb-6'>Contact Us</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
@@ -55,7 +55,7 @@ const Contact = () => {
                             <input
                                 type="text"
                                 placeholder="Your Name"
-                                className='w-full border rounded-lg p-3'
+                                className='w-full py-3 px-5 outline-none border border-input-text rounded-lg placeholder:text-input-text'
                                 {...register("name", { required: "Name is required" })}
                             />
                             {errors.name && <p className='text-red-500 text-sm'>{errors.name.message}</p>}
@@ -65,7 +65,7 @@ const Contact = () => {
                             <input
                                 type="email"
                                 placeholder="Your Email"
-                                className='w-full border rounded-lg p-3'
+                                className='w-full py-3 px-5 outline-none border border-input-text rounded-lg placeholder:text-input-text'
                                 {...register("email", {
                                     required: "Email is required",
                                     pattern: {
@@ -81,7 +81,7 @@ const Contact = () => {
                             <textarea
                                 rows="5"
                                 placeholder="Write your message"
-                                className='w-full border rounded-lg p-3'
+                                className='w-full border rounded-lg p-3 outline-none border-input-text placeholder:text-input-text'
                                 {...register("message", { required: "Message is required" })}
                             ></textarea>
                             {errors.message && <p className='text-red-500 text-sm'>{errors.message.message}</p>}
@@ -89,7 +89,7 @@ const Contact = () => {
 
                         <button
                             type="submit"
-                            className='bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700'
+                            className='bg-[#CAEB66] duration-500 cursor-pointer text-green-blue font-semibold px-6 py-3 rounded-lg hover:bg-[#cde680]'
                         >
                             Send Message
                         </button>
