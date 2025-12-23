@@ -1,131 +1,88 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import {
-  FaMotorcycle,
-  FaCheckCircle,
-  FaShippingFast,
-  FaBoxOpen,
-} from "react-icons/fa";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useAuth from "../../../Hooks/useAuth";
 
-const COLORS = {
-  not_collected: "#F87171",
-  in_transit: "#FBBF24",
-  rider_assigned: "#60A5FA",
-  delivered: "#34D399",
-};
 
-const statusIcons = {
-  rider_assigned: <FaMotorcycle className="text-4xl text-info" />,
-  delivered: <FaCheckCircle className="text-4xl text-success" />,
-  in_transit: <FaShippingFast className="text-4xl text-warning" />,
-  not_collected: <FaBoxOpen className="text-4xl text-error" />,
-};
-
-const statusLabels = {
-  rider_assigned: "Assigned to Me",
-  delivered: "Delivered",
-  in_transit: "In Transit",
-  not_collected: "Not Collected",
-};
-
-export default function RiderDashboard() {
+const RiderDashboard = () => {
   const axiosSecure = useAxiosSecure();
-  const {user} = useAuth();
+  const [parcels, setParcels] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const { data: deliveryStatus = [], isLoading, isError, error } = useQuery({
-    queryKey: ["riderParcelStatusCount"],
-    queryFn: async () => {
-      // 🔥 rider specific endpoint
-      const res = await axiosSecure.get(`/rider/parcels/status-count?email=${user.email}`);
-      return res.data;
-    },
-    staleTime: 5 * 60 * 1000,
-    retry: 1,
-  });
+  useEffect(() => {
+    const fetchParcels = async () => {
+      try {
+        const res = await axiosSecure.get("/rider/parcels");
+        setParcels(res.data);
+      } catch (err) {
+        console.error("Failed to fetch rider parcels:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchParcels();
+  }, [axiosSecure]);
 
-  const processedPieData = deliveryStatus.map((item) => ({
-    name: statusLabels[item.status] || item.status,
-    value: item.count,
-    status: item.status,
-  }));
-
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center min-h-[70vh]">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-
-  if (isError)
-    return (
-      <div className="text-center text-red-600 mt-10">
-        Error loading data: {error.message}
-      </div>
-    );
+  const totalAssigned = parcels.length;
+  const inTransit = parcels.filter(p => p.delivery_status === "in_transit").length;
+  const delivered = parcels.filter(p => p.delivery_status === "delivered").length;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">My Delivery Dashboard</h1>
+    <div className="px-6 md:px-16 my-12">
+      <h1 className="text-4xl font-extrabold text-green-700 mb-8 text-center">
+        Rider Dashboard
+      </h1>
 
-      {/* status cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {deliveryStatus.map(({ count, status }) => (
-          <div
-            key={status}
-            className="card bg-base-100 shadow-md border border-base-200 flex flex-col items-center justify-center p-6"
-          >
-            {statusIcons[status] || <FaBoxOpen className="text-4xl" />}
-            <h2 className="text-lg font-semibold mt-3 text-center">
-              {statusLabels[status] || status}
-            </h2>
-            <p className="text-4xl font-extrabold text-primary mt-2">
-              {count}
-            </p>
-          </div>
-        ))}
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="bg-white shadow-md rounded-xl p-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-800">{totalAssigned}</h2>
+          <p className="text-gray-500 mt-2">Total Assigned Parcels</p>
+        </div>
+        <div className="bg-white shadow-md rounded-xl p-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-800">{inTransit}</h2>
+          <p className="text-gray-500 mt-2">In Transit</p>
+        </div>
+        <div className="bg-white shadow-md rounded-xl p-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-800">{delivered}</h2>
+          <p className="text-gray-500 mt-2">Delivered</p>
+        </div>
       </div>
 
-      {/* pie chart */}
-      <div className="card bg-base-100 shadow-md mt-8 p-4">
-        <h2 className="text-xl font-bold mb-4">
-          My Delivery Status Breakdown
-        </h2>
-
-        <ResponsiveContainer width="100%" height={500}>
-          <PieChart>
-            <Pie
-              data={processedPieData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={200}
-              label={({ name, percent }) =>
-                `${name} (${(percent * 100).toFixed(0)}%)`
-              }
-            >
-              {processedPieData.map((entry) => (
-                <Cell
-                  key={`cell-${entry.status}`}
-                  fill={COLORS[entry.status] || "#A78BFA"}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend verticalAlign="bottom" height={36} />
-          </PieChart>
-        </ResponsiveContainer>
+      {/* Parcel List */}
+      <div>
+        <h2 className="text-2xl font-bold text-gray-700 mb-4">Your Parcels</h2>
+        {loading ? (
+          <p>Loading parcels...</p>
+        ) : parcels.length === 0 ? (
+          <p>No parcels assigned yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white rounded-xl shadow-md">
+              <thead>
+                <tr className="bg-green-700 text-white">
+                  <th className="py-2 px-4">Tracking ID</th>
+                  <th className="py-2 px-4">Status</th>
+                  <th className="py-2 px-4">Customer</th>
+                  <th className="py-2 px-4">Assigned At</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parcels.map((parcel) => (
+                  <tr key={parcel._id} className="text-center border-b">
+                    <td className="py-2 px-4">{parcel.tracking_id}</td>
+                    <td className="py-2 px-4">{parcel.delivery_status}</td>
+                    <td className="py-2 px-4">{parcel.created_by}</td>
+                    <td className="py-2 px-4">
+                      {new Date(parcel.createdAt).toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
-}
+};
+
+export default RiderDashboard;
