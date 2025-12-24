@@ -38,6 +38,7 @@ import Pricing from "../Pages/Pricing";
 import Services from "../Pages/Services";
 import Blogs from "../Pages/Blogs";
 import Contact from "../Pages/Contact";
+import SingleBlog from "../Pages/SingleBlog";
 
 const router = createBrowserRouter([
     {
@@ -71,7 +72,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'blog',
-                Component: Blogs
+                Component: Blogs,
+                loader: () => fetch('./blogs.json')
+            },
+            {
+                path: 'blog/:id',
+                Component: SingleBlog,
+                loader: () => fetch('./blogs.json')
             },
             {
                 path: 'contact',

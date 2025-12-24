@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "title": "How Our Parcel Delivery System Works",
+    "description": "Learn how we collect, track, and deliver parcels safely and on time using our smart delivery system.",
+    "date": "12 August 2025",
+    "image": "https://i.ibb.co.com/8LLn7Y7m/delivery-van-7752030-480.jpg",
+    "content": "Our parcel delivery system follows a structured process: booking, pickup, sorting, dispatch, live tracking and final delivery. Each parcel is scanned at every checkpoint so customers always know where their parcel is. This automation reduces delays and human error, making delivery faster and safer."
+  },
+  {
+    "id": 2,
+    "title": "Why Parcel Tracking is Important",
+    "description": "Real-time parcel tracking helps customers stay updated and builds trust in delivery services.",
+    "date": "18 August 2025",
+    "image": "https://i.ibb.co.com/39BNfpP8/R.jpg",
+    "content": "Tracking builds transparency. Customers can follow the parcel journey in real time, receive notifications, and plan ahead. It also helps support teams quickly resolve issues if something goes wrong. Ultimately, tracking creates trust between customer and service provider."
+  },
+  {
+    "id": 3,
+    "title": "Safe Parcel Handling Tips",
+    "description": "We ensure parcel safety with proper packaging, careful handling, and trained delivery riders.",
+    "date": "25 August 2025",
+    "image": "https://i.ibb.co.com/938Sqszm/Push-Cart-Cobra-1-1024x683.jpg",
+    "content": "Proper packaging is the first layer of safety. Fragile items are labeled, bubble-wrapped and separated. Our staff are trained to handle parcels gently and avoid stacking heavy boxes on top of light ones. Safety checks reduce damage and complaints."
+  },
+  {
+    "id": 4,
+    "title": "Cash on Delivery: A Reliable Option",
+    "description": "Cash on delivery allows customers to pay only after receiving their parcels safely.",
+    "date": "1 September 2025",
+    "image": "https://i.ibb.co.com/TBcbcfR7/OIP.webp",
+    "content": "Cash on Delivery (COD) is popular because customers pay only when they see the product. It protects buyers from fraud and increases sales for businesses. Our riders follow a secure cash-handling protocol to ensure both seller and customer remain protected."
+  },
+  {
+    "id": 5,
+    "title": "How Our Riders Ensure Fast Delivery",
+    "description": "Our professional riders use optimized routes and real-time updates to ensure fast delivery.",
+    "date": "8 September 2025",
+    "image": "https://i.ibb.co.com/9mPRW8WV/top-5-motorcycles-for-delivery-riders-6124996aeee02.jpg",
+    "content": "Riders receive optimized delivery routes generated automatically. This reduces traffic delays and fuel usage. They stay connected with dispatch via mobile app, so any emergency rerouting happens instantly — helping parcels reach faster."
+  },
+  {
+    "id": 6,
+    "title": "Benefits of Same-Day Delivery",
+    "description": "Same-day delivery ensures urgent parcels reach customers without delay.",
+    "date": "15 September 2025",
+    "image": "https://i.ibb.co.com/PvCL5wTL/SAME-DAY-DELIVERY-480x480.webp",
+    "content": "Same-day delivery is ideal for urgent documents, gifts, and business orders. It improves customer satisfaction and builds loyalty. Our network and route management system allow us to offer fast same-day delivery in many areas."
+  },
+  {
+    "id": 7,
+    "title": "How We Handle Fragile Parcels",
+    "description": "Special packaging and handling protocols keep fragile parcels safe.",
+    "date": "22 September 2025",
+    "image": "https://i.ibb.co.com/S7fHQ24c/fragile-quj50coq5ssgqam5sgeuv4hajx7z8rm72efdlne9o0.jpg",
+    "content": "Fragile parcels go through a dedicated handling process. They are marked, packed with cushioning, and placed in secure compartments inside vehicles. Riders are trained to avoid sudden impacts, ensuring the item arrives safely."
+  },
+  {
+    "id": 8,
+    "title": "Eco-Friendly Parcel Delivery",
+    "description": "We are reducing carbon footprint using optimized routes and eco vehicles.",
+    "date": "30 September 2025",
+    "image": "https://i.ibb.co.com/5W6bPs7m/OIP-1.webp",
+    "content": "We reduce emissions by optimizing delivery routes, minimizing fuel usage, and gradually adding eco-friendly vehicles. Sustainable delivery protects the environment while still keeping service fast and reliable."
+  },
+  {
+    "id": 9,
+    "title": "Top Reasons Parcels Get Delayed",
+    "description": "Weather, traffic, and incorrect addresses are common delay factors.",
+    "date": "5 October 2025",
+    "image": "https://i.ibb.co.com/JWLJX3gS/OIP-2.webp",
+    "content": "Most delays happen due to incorrect addresses, severe weather, traffic blocks, or customers not being available. Our support team always follows up and reschedules to reduce failed deliveries."
+  }
+]
+
