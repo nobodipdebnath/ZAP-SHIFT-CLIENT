@@ -34,7 +34,7 @@ const TrackParcel = () => {
           placeholder="Enter Tracking ID"
           value={trackingId}
           onChange={(e) => setTrackingId(e.target.value)}
-          className="border p-3 rounded-lg w-full md:w-1/2"
+          className="border p-3 outline-none border-input-text placeholder:text-input-text rounded-lg w-full md:w-1/2"
         />
         <button
           onClick={handleTrack}

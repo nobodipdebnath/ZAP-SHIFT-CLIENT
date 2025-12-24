@@ -27,10 +27,6 @@ const UserDashboard = () => {
 
   return (
     <div className="px-6 md:px-16 my-12">
-      <h1 className="text-4xl font-extrabold text-green-700 mb-8">
-        Welcome to Your Dashboard
-      </h1>
-
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         <div className="bg-white shadow-md rounded-xl p-6 text-center">

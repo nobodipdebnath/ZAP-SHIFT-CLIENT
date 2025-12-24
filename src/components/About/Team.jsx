@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ChevronLeft, ChevronRight, Linkedin, Mail } from "lucide-react";
 
 // Example team data
 const teamMembers = [
@@ -81,61 +82,128 @@ const Team = () => {
 
   const totalPages = Math.ceil(teamMembers.length / membersPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <div className="md:px-16 my-12">
+    <div className="md:px-16 px-6 my-12 bg-gradient-to-b from-white to-gray-50 py-16">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-green-blue">
-          Meet Our Team
-        </h1>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+      <div className="text-center mb-16">
+        <div className="inline-block">
+          <h1 className="text-5xl font-extrabold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            Meet Our Team
+          </h1>
+          <div className="h-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-full"></div>
+        </div>
+        <p className="mt-6 text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
           Our professional team ensures safe, fast, and reliable parcel delivery
           for all customers.
         </p>
       </div>
 
       {/* Team Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-        {currentMembers.map((member) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+        {currentMembers.map((member, index) => (
           <div
             key={member.id}
-            className="py-8 p-4 lg:px-10 bg-white shadow rounded-2xl"
+            className="group relative py-8 p-4 lg:px-10 bg-white shadow-lg hover:shadow-2xl rounded-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+            style={{
+              animationDelay: `${index * 100}ms`,
+            }}
           >
-            <img
-              src={member.image}
-              alt={member.name}
-              className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] mx-auto border-6 border-green-500 object-cover"
-            />
-            <div className="flex items-center justify-center flex-col mt-4">
-              <h2 className="text-2xl font-extrabold text-green-blue">
-                {member.name}
-              </h2>
-              <p className="text-base font-medium text-gray-800">
-                {member.role}
-              </p>
+            {/* Gradient background on hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+            
+            <div className="relative">
+              {/* Image with border and gradient ring */}
+              <div className="relative mx-auto w-[200px] h-[200px] md:w-[250px] md:h-[250px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="relative rounded-full h-full w-full border-4 border-white shadow-xl object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                {/* Online status indicator */}
+                <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 border-4 border-white rounded-full"></div>
+              </div>
+
+              {/* Member Info */}
+              <div className="flex items-center justify-center flex-col mt-6">
+                <h2 className="text-2xl font-extrabold bg-gradient-to-r from-green-700 to-blue-700 bg-clip-text text-transparent group-hover:from-green-600 group-hover:to-blue-600 transition-all">
+                  {member.name}
+                </h2>
+                <p className="text-base font-medium text-gray-600 mt-1">
+                  {member.role}
+                </p>
+
+                {/* Social Links */}
+                <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button className="p-2 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <Linkedin className="w-5 h-5 text-blue-600" />
+                  </button>
+                  <button className="p-2 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                    <Mail className="w-5 h-5 text-green-600" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
             </div>
           </div>
         ))}
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center mt-10 space-x-3">
+      <div className="flex items-center justify-center gap-2 mt-8">
+        {/* Previous Button */}
+        <button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={`p-2 rounded-lg transition-all ${
+            currentPage === 1
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-white text-green-600 hover:bg-green-50 shadow-md hover:shadow-lg"
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Page Numbers */}
         {Array.from({ length: totalPages }, (_, idx) => (
           <button
             key={idx + 1}
             onClick={() => paginate(idx + 1)}
-            className={`px-4 py-2 rounded-lg border ${
+            className={`w-10 h-10 rounded-lg font-semibold transition-all ${
               currentPage === idx + 1
-                ? "bg-green-700 text-white"
-                : "bg-white text-green-700 border-green-700"
+                ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg transform scale-110"
+                : "bg-white text-gray-700 hover:bg-green-50 shadow-md hover:shadow-lg"
             }`}
           >
             {idx + 1}
           </button>
         ))}
+
+        {/* Next Button */}
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={`p-2 rounded-lg transition-all ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-white text-green-600 hover:bg-green-50 shadow-md hover:shadow-lg"
+          }`}
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </div>
+
+      {/* Page Info */}
+      <p className="text-center mt-4 text-gray-600 text-sm">
+        Showing {indexOfFirstMember + 1}-{Math.min(indexOfLastMember, teamMembers.length)} of {teamMembers.length} team members
+      </p>
     </div>
   );
 };
