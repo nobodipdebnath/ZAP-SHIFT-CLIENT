@@ -13,7 +13,7 @@ const Blogs = () => {
   const totalPages = Math.ceil(blogs.length / postsPerPage);
 
   return (
-    <div className="px-6 md:px-16 my-12 bg-white rounded-3xl py-12">
+    <div className=" px-3  md:px-16 my-8 md:my-12 bg-white rounded-3xl py-8 md:py-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-extrabold text-green-blue">
           Our Blogs
@@ -28,7 +28,7 @@ const Blogs = () => {
         {currentBlogs.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white rounded-xl border border-input-text p-6 hover:shadow-lg transition"
+            className="bg-white rounded-xl border border-input-text p-3 md:p-6 hover:shadow-lg transition"
           >
             <img className="w-full h-[250px] rounded-lg mb-4 object-cover" src={blog.image} alt="" />
             <p className="text-sm text-gray-500">{blog.date}</p>
