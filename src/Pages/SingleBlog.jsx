@@ -11,9 +11,9 @@ const SingleBlog = () => {
     console.log(blog);
 
     return (
-        <div className="bg-white rounded-3xl p-16 my-8 grid grid-cols-1 lg:grid-cols-2 gap-7 py-10">
+        <div className="bg-white rounded-3xl px-3 md:p-16 my-8 grid grid-cols-1 lg:grid-cols-2 gap-7 py-10">
             <div>
-                <img src={blog?.image} className="" alt={blog?.title} />
+                <img src={blog?.image} className="rounded  w-full object-cover" alt={blog?.title} />
             </div>
             <div>
                 <p className="text-gray-500 text-sm">{blog?.date}</p>
