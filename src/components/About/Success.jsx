@@ -48,7 +48,7 @@ const successMetrics = [
 
 const Success = () => {
   return (
-    <div className="px-6 md:px-16 py-16 my-12 bg-gradient-to-b from-white to-green-50 rounded-2xl">
+    <div className="md:px-6 lg::px-16 py-16 my-12 bg-gradient-to-b from-white to-green-50 rounded-2xl">
       <div className="text-center mb-14">
         <h1 className="text-4xl font-extrabold text-green-blue">
           Our Success Stories

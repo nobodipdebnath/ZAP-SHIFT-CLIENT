@@ -39,7 +39,7 @@ const storySections = [
 
 const Story = () => {
   return (
-    <div className="px-6 md:px-16 py-16 my-12 bg-gradient-to-b from-white to-green-50 rounded-2xl">
+    <div className="md:px-6 lg:px-16 py-16 my-12 bg-gradient-to-b from-white to-green-50 rounded-2xl">
       {/* Header */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-extrabold text-green-blue">Our Story</h1>

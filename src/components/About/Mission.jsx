@@ -128,7 +128,7 @@ const Mission = () => {
   };
   
   return (
-    <div className="px-6 md:px-16 my-16 bg-gradient-to-b from-gray-50 to-white py-12">
+    <div className="md:px-6 lg:px-16 my-16 bg-gradient-to-b from-gray-50 to-white py-12">
       {/* Header */}
       <div className="text-center mb-16">
         <div className="inline-block">

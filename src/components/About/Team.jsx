@@ -88,7 +88,7 @@ const Team = () => {
   };
 
   return (
-    <div className="md:px-16 px-6 my-12 bg-gradient-to-b from-white to-gray-50 py-16">
+    <div className="lg:px-16 md:px-6 my-12 bg-gradient-to-b from-white to-gray-50 py-16">
       {/* Header */}
       <div className="text-center mb-16">
         <div className="inline-block">
