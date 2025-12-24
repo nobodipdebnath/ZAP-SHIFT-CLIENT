@@ -40,7 +40,7 @@ const blogs = [
 
 const Blogs = () => {
   return (
-    <div className="px-6 md:px-16 my-12">
+    <div className="px-6 md:px-16 my-12 bg-white rounded-3xl py-12">
       {/* Page Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-extrabold text-green-700">

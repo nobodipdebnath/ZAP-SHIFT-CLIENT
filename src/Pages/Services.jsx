@@ -55,10 +55,10 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="px-6 md:px-16 my-14">
+    <div className="px-6 bg-white rounded-3xl py-12 md:px-16 my-14">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-green-700">
+        <h1 className="text-4xl font-extrabold text-green-blue">
           Our Services
         </h1>
         <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
@@ -72,7 +72,7 @@ const Services = () => {
         {services.map((service) => (
           <div
             key={service.id}
-            className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition text-center"
+            className="bg-white p-8 rounded-xl  border border-input-text hover:shadow-lg transition text-center"
           >
             <div className="text-green-600 text-5xl mb-4 flex justify-center">
               {service.icon}
