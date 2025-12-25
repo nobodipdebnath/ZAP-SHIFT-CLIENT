@@ -7,19 +7,24 @@ const Profile = () => {
   const { user } = useAuth(); // firebase user
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
   const axiosSecure = useAxiosSecure();
-  const [stats, setStats] = useState({
-    totalParcels: 0,
-    pendingParcels: 0,
-    deliveredParcels: 0,
-    totalSpent: 0
-  });
+  const [stats, setStats] = useState([]);
+  const [completed, setCompleted] = useState([]);
+  console.log(completed);
+
+  const totalParcels = stats.length;
+  const inTransit = stats.filter(
+    (p) => p.delivery_status === "in_transit"
+  ).length;
+  const delivered = stats.filter(
+    (p) => p.delivery_status === "delivered"
+  ).length;
 
   useEffect(() => {
     if (user?.email) {
       axiosSecure
-        .get(`/users/${user.email}`)
+        .get(`/users/${user.email}/role`)
         .then((res) => {
           setProfile(res.data);
           setLoading(false);
@@ -28,15 +33,26 @@ const Profile = () => {
           console.error(err);
           setLoading(false);
         });
-      
+
       // Fetch user statistics
       axiosSecure
-        .get(`/users/${user.email}/stats`)
+        .get(`/parcels`)
         .then((res) => {
           setStats(res.data);
         })
         .catch((err) => {
           console.error(err);
+        });
+
+      axiosSecure
+        .get("/rider/completed-parcels")
+        .then((res) => {
+          setCompleted(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setLoading(false);
         });
     }
   }, [user]);
@@ -46,11 +62,14 @@ const Profile = () => {
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-green-600 mb-4"></div>
-          <p className="text-xl font-semibold text-gray-700">Loading Profile...</p>
+          <p className="text-xl font-semibold text-gray-700">
+            Loading Profile...
+          </p>
         </div>
       </div>
     );
   }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-12 px-4">
@@ -85,21 +104,39 @@ const Profile = () => {
                       {profile?.name || user?.displayName}
                     </h2>
                     <div className="flex items-center justify-center md:justify-start gap-2 text-gray-600">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
                       </svg>
-                      <span className="text-sm md:text-base">{user?.email}</span>
+                      <span className="text-sm md:text-base">
+                        {user?.email}
+                      </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-green-200 hover:shadow-lg transition duration-300">
-                      <p className="text-green-600 text-xs font-semibold uppercase tracking-wide mb-1">Phone</p>
-                      <p className="text-gray-800 font-semibold text-lg">{profile?.phone || "Not Added"}</p>
+                      <p className="text-green-600 text-xs font-semibold uppercase tracking-wide mb-1">
+                        Phone
+                      </p>
+                      <p className="text-gray-800 font-semibold text-lg">
+                        {profile?.phone || "Not Added"}
+                      </p>
                     </div>
 
                     <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl border border-blue-200 hover:shadow-lg transition duration-300">
-                      <p className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">Role</p>
+                      <p className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">
+                        Role
+                      </p>
                       <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-blue-500 text-white text-sm font-semibold shadow-md">
                         {profile?.role}
                       </span>
@@ -111,7 +148,7 @@ const Profile = () => {
                       <span className="relative z-10">Edit Profile</span>
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-700 to-blue-700 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </button>
-                    <Link to='/sendParcel' className="w-full sm:w-auto">
+                    <Link to="/sendParcel" className="w-full sm:w-auto">
                       <button className="w-full px-8 py-3 rounded-xl bg-white text-gray-800 font-semibold border-2 border-gray-300 hover:border-green-600 hover:text-green-600 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-300">
                         Add a Parcel
                       </button>
@@ -128,12 +165,26 @@ const Profile = () => {
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm font-medium mb-1">Total Parcels</p>
-                <h3 className="text-3xl font-bold text-gray-800">{stats.totalParcels}</h3>
+                <p className="text-gray-500 text-sm font-medium mb-1">
+                  Total Parcels
+                </p>
+                <h3 className="text-3xl font-bold text-gray-800">
+                  {totalParcels}
+                </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                <svg
+                  className="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  />
                 </svg>
               </div>
             </div>
@@ -142,12 +193,26 @@ const Profile = () => {
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm font-medium mb-1">Pending</p>
-                <h3 className="text-3xl font-bold text-gray-800">{stats.pendingParcels}</h3>
+                <p className="text-gray-500 text-sm font-medium mb-1">
+                  Pending
+                </p>
+                <h3 className="text-3xl font-bold text-gray-800">
+                  {inTransit}
+                </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -156,12 +221,26 @@ const Profile = () => {
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm font-medium mb-1">Delivered</p>
-                <h3 className="text-3xl font-bold text-gray-800">{stats.deliveredParcels}</h3>
+                <p className="text-gray-500 text-sm font-medium mb-1">
+                  Delivered
+                </p>
+                <h3 className="text-3xl font-bold text-gray-800">
+                  {delivered}
+                </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -170,12 +249,26 @@ const Profile = () => {
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm font-medium mb-1">Total Spent</p>
-                <h3 className="text-3xl font-bold text-gray-800">${stats.totalSpent}</h3>
+                <p className="text-gray-500 text-sm font-medium mb-1">
+                  Total Spent
+                </p>
+                <h3 className="text-3xl font-bold text-gray-800">
+                  ${stats.totalSpent}
+                </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-7 h-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -187,31 +280,31 @@ const Profile = () => {
           <div className="border-b border-gray-200">
             <div className="flex gap-2 p-2">
               <button
-                onClick={() => setActiveTab('overview')}
+                onClick={() => setActiveTab("overview")}
                 className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
-                  activeTab === 'overview'
-                    ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100'
+                  activeTab === "overview"
+                    ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 Overview
               </button>
               <button
-                onClick={() => setActiveTab('activity')}
+                onClick={() => setActiveTab("activity")}
                 className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
-                  activeTab === 'activity'
-                    ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100'
+                  activeTab === "activity"
+                    ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 Activity
               </button>
               <button
-                onClick={() => setActiveTab('settings')}
+                onClick={() => setActiveTab("settings")}
                 className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
-                  activeTab === 'settings'
-                    ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100'
+                  activeTab === "settings"
+                    ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 Settings
@@ -220,74 +313,127 @@ const Profile = () => {
           </div>
 
           <div className="p-8">
-            {activeTab === 'overview' && (
+            {activeTab === "overview" && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Account Overview</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Account Overview
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                      <span className="text-gray-600 font-medium">Member Since</span>
-                      <span className="text-gray-800 font-semibold">{profile?.memberSince || 'January 2024'}</span>
+                      <span className="text-gray-600 font-medium">
+                        Member Since
+                      </span>
+                      <span className="text-gray-800 font-semibold">
+                        {profile?.created_at || "January 2024"}
+                      </span>
                     </div>
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                      <span className="text-gray-600 font-medium">Account Status</span>
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Active</span>
+                      <span className="text-gray-600 font-medium">
+                        Account Status
+                      </span>
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                        Active
+                      </span>
                     </div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                      <span className="text-gray-600 font-medium">Location</span>
-                      <span className="text-gray-800 font-semibold">{profile?.location || 'Not Set'}</span>
+                      <span className="text-gray-600 font-medium">
+                        Location
+                      </span>
+                      <span className="text-gray-800 font-semibold">
+                        {profile?.location || "Not Set"}
+                      </span>
                     </div>
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                      <span className="text-gray-600 font-medium">Preferred Language</span>
-                      <span className="text-gray-800 font-semibold">English</span>
+                      <span className="text-gray-600 font-medium">
+                        Preferred Language
+                      </span>
+                      <span className="text-gray-800 font-semibold">
+                        English
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {activeTab === 'activity' && (
+            {activeTab === "activity" && (
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Recent Activity</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Recent Activity
+                </h3>
                 <div className="space-y-3">
-                  {[1, 2, 3].map((item) => (
-                    <div key={item} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300">
+                  {completed.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300"
+                    >
                       <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        <svg
+                          className="w-6 h-6 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                          />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <p className="font-semibold text-gray-800">Parcel #{1000 + item} delivered</p>
-                        <p className="text-sm text-gray-500">{item} days ago</p>
+                        <p className="font-semibold text-gray-800">
+                          Parcel # {item.title} delivered
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {item.delivered_at} days ago
+                        </p>
                       </div>
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Completed</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                        Completed
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {activeTab === 'settings' && (
+            {activeTab === "settings" && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Account Settings</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Account Settings
+                </h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                     <div>
-                      <p className="font-semibold text-gray-800">Email Notifications</p>
-                      <p className="text-sm text-gray-500">Receive updates about your parcels</p>
+                      <p className="font-semibold text-gray-800">
+                        Email Notifications
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Receive updates about your parcels
+                      </p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" className="sr-only peer" defaultChecked />
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        defaultChecked
+                      />
                       <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
                     </label>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                     <div>
-                      <p className="font-semibold text-gray-800">SMS Notifications</p>
-                      <p className="text-sm text-gray-500">Get text updates on your phone</p>
+                      <p className="font-semibold text-gray-800">
+                        SMS Notifications
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Get text updates on your phone
+                      </p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" className="sr-only peer" />
@@ -296,8 +442,12 @@ const Profile = () => {
                   </div>
                   <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                     <div>
-                      <p className="font-semibold text-gray-800">Two-Factor Authentication</p>
-                      <p className="text-sm text-gray-500">Add extra security to your account</p>
+                      <p className="font-semibold text-gray-800">
+                        Two-Factor Authentication
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Add extra security to your account
+                      </p>
                     </div>
                     <button className="px-4 py-2 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition duration-300">
                       Enable
