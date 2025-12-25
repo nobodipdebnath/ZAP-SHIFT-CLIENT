@@ -70,6 +70,24 @@ const Profile = () => {
     );
   }
 
+  // ====== New function for human-friendly "days ago" ======
+  function daysAgo(isoDate) {
+    if (!isoDate) return "Delivery pending";
+
+    const delivered = new Date(isoDate);
+    const today = new Date();
+
+    delivered.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    const diffDays = Math.floor((today - delivered) / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) return "today";
+    if (diffDays === 1) return "yesterday";
+    if (diffDays < 7) return `${diffDays} day ago`;
+    const weeks = Math.floor(diffDays / 7);
+    return `${weeks} week ago`;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-12 px-4">
@@ -390,7 +408,7 @@ const Profile = () => {
                           Parcel # {item.title} delivered
                         </p>
                         <p className="text-sm text-gray-500">
-                          {item.delivered_at} days ago
+                          {daysAgo(item.delivered_at)}
                         </p>
                       </div>
                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
