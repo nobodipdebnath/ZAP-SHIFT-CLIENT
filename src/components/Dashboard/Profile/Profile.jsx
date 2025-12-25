@@ -10,8 +10,8 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const axiosSecure = useAxiosSecure();
   const [stats, setStats] = useState([]);
-  const [completed, setCompleted] = useState([]);
-  console.log(completed);
+
+  console.log(profile)
 
   const totalParcels = stats.length;
   const inTransit = stats.filter(
@@ -42,17 +42,6 @@ const Profile = () => {
         })
         .catch((err) => {
           console.error(err);
-        });
-
-      axiosSecure
-        .get("/rider/completed-parcels")
-        .then((res) => {
-          setCompleted(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error(err);
-          setLoading(false);
         });
     }
   }, [user]);
@@ -383,7 +372,7 @@ const Profile = () => {
                   Recent Activity
                 </h3>
                 <div className="space-y-3">
-                  {completed.map((item, idx) => (
+                  {stats.map((item, idx) => (
                     <div
                       key={idx}
                       className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300"
@@ -412,7 +401,7 @@ const Profile = () => {
                         </p>
                       </div>
                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                        Completed
+                        {item.delivery_status}
                       </span>
                     </div>
                   ))}
