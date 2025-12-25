@@ -11,7 +11,7 @@ const Profile = () => {
   const axiosSecure = useAxiosSecure();
   const [stats, setStats] = useState([]);
 
-  console.log(profile)
+  console.log(profile);
 
   const totalParcels = stats.length;
   const inTransit = stats.filter(
@@ -76,6 +76,13 @@ const Profile = () => {
     if (diffDays < 7) return `${diffDays} day ago`;
     const weeks = Math.floor(diffDays / 7);
     return `${weeks} week ago`;
+  }
+
+  function formatMonthYear(isoDate) {
+    if (!isoDate) return "N/A";
+    const date = new Date(isoDate);
+    const options = { year: "numeric", month: "long" };
+    return date.toLocaleDateString("en-US", options);
   }
 
   return (
@@ -332,7 +339,7 @@ const Profile = () => {
                         Member Since
                       </span>
                       <span className="text-gray-800 font-semibold">
-                        {profile?.created_at || "January 2024"}
+                        {formatMonthYear(profile?.created_at || "January 2024")}
                       </span>
                     </div>
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
