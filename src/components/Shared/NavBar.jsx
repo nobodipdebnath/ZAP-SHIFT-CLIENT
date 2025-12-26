@@ -32,21 +32,24 @@ const NavBar = () => {
             text: "You won't Sign Out Your Account",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes"
+            confirmButtonText: "Yes",
+            cancelButtonText: "Cancel",
+            confirmButtonColor: "#16a34a",
+            cancelButtonColor: "#ef4444",
         }).then((result) => {
             if (result.isConfirmed) {
-                logOutUser();
-                setOpen(false);
+            logOutUser();
+            setOpen(false);
             }
         });
-    }
+    };
 
     return (
         <nav className='flex items-center justify-between py-5 md:px-8 px-4 bg-white rounded-lg relative'>
 
             {/* Logo */}
             <div>
-                <Link>
+                <Link to='/'>
                     <img src={logo} alt="" />
                 </Link>
             </div>
@@ -106,45 +109,47 @@ const NavBar = () => {
 
             {/* 🔥 Mobile Slide Menu */}
             <div
-                className={`fixed top-0 right-0 h-full w-64 bg-white z-50 p-5
+                className={`fixed top-0 right-0 h-screen w-64 bg-white backdrop-blur-2xl z-50 
                 transform transition-transform duration-300 ease-in-out
                 ${open ? "translate-x-0" : "translate-x-full"}`}
             >
 
-                <div className="flex justify-end">
-                    <button onClick={() => setOpen(false)}>
-                        <FiX className="text-3xl" />
-                    </button>
-                </div>
+                <div className="p-5 bg-white">
+                    <div className="flex justify-end">
+                        <button onClick={() => setOpen(false)}>
+                            <FiX className="text-3xl" />
+                        </button>
+                    </div>
 
-                <ul className="mt-6 space-y-2 text-lg  font-medium">
-                    {links}
-                </ul>
+                    <ul className="mt-6 space-y-2 text-lg  font-medium">
+                        {links}
+                    </ul>
 
-                <div className="mt-4 space-y-3">
-                    {
-                        user ? (
-                            <button
-                                onClick={logOut}
-                                className="w-full font-semibold text-green-blue py-2 border rounded-lg border-input-text"
-                            >
-                                Log Out
-                            </button>
-                        ) : (
-                            <>
-                                <Link to="/login" onClick={() => setOpen(false)}>
-                                    <button className="w-full font-semibold border-input-text text-green-blue py-2 border rounded-lg">
-                                        Login
-                                    </button>
-                                </Link>
-                                <Link to="/register" onClick={() => setOpen(false)}>
-                                    <button className="w-full mt-4 font-semibold border-input-text text-green-blue py-2 border rounded-lg">
-                                        Register
-                                    </button>
-                                </Link>
-                            </>
-                        )
-                    }
+                    <div className="mt-4 space-y-3">
+                        {
+                            user ? (
+                                <button
+                                    onClick={logOut}
+                                    className="w-full font-semibold text-green-blue py-2 border rounded-lg border-input-text"
+                                >
+                                    Log Out
+                                </button>
+                            ) : (
+                                <>
+                                    <Link to="/login" onClick={() => setOpen(false)}>
+                                        <button className="w-full font-semibold border-input-text text-green-blue py-2 border rounded-lg">
+                                            Login
+                                        </button>
+                                    </Link>
+                                    <Link to="/register" onClick={() => setOpen(false)}>
+                                        <button className="w-full mt-4 font-semibold border-input-text text-green-blue py-2 border rounded-lg">
+                                            Register
+                                        </button>
+                                    </Link>
+                                </>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
 

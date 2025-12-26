@@ -36,7 +36,7 @@ const Root = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 50,
+          zIndex: 9999,
           transition: 'transform 0.3s ease',
           transform: showNav ? 'translateY(0)' : 'translateY(-100%)'
         }}
