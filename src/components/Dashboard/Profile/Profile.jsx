@@ -10,14 +10,19 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const axiosSecure = useAxiosSecure();
   const [stats, setStats] = useState([]);
+  const [riders, setRiders] = useState([]);
 
-  console.log(profile);
+  // console.log(profile);
+  // console.log(riders)
+  // console.log(stats)
 
-  const totalParcels = stats.length;
-  const inTransit = stats.filter(
+  const parcels = stats.filter(parcel => parcel.created_by === user.email)
+  console.log(parcels)
+
+  const inTransit = parcels.filter(
     (p) => p.delivery_status === "in_transit"
   ).length;
-  const delivered = stats.filter(
+  const delivered = parcels.filter(
     (p) => p.delivery_status === "delivered"
   ).length;
 
@@ -43,6 +48,14 @@ const Profile = () => {
         .catch((err) => {
           console.error(err);
         });
+
+      axiosSecure.get(`/riders/email/${user.email}`)
+      .then((res) => {
+        setRiders(res.data);
+      })
+      .catch((err) => {
+        console.error(err)
+      })
     }
   }, [user]);
 
@@ -77,7 +90,7 @@ const Profile = () => {
     const weeks = Math.floor(diffDays / 7);
     return `${weeks} week ago`;
   }
-  // 
+  // make month and year
   function formatMonthYear(isoDate) {
     if (!isoDate) return "N/A";
     const date = new Date(isoDate);
@@ -143,7 +156,7 @@ const Profile = () => {
                         Phone
                       </p>
                       <p className="text-gray-800 font-semibold text-lg">
-                        {profile?.phone || "Not Added"}
+                        {riders?.phone || "Not Added"}
                       </p>
                     </div>
 
@@ -183,7 +196,7 @@ const Profile = () => {
                   Total Parcels
                 </p>
                 <h3 className="text-3xl font-bold text-gray-800">
-                  {totalParcels}
+                  {parcels.length}
                 </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
@@ -357,7 +370,7 @@ const Profile = () => {
                         Location
                       </span>
                       <span className="text-gray-800 font-semibold">
-                        {profile?.location || "Not Set"}
+                        {riders?.district || "Not Set"}
                       </span>
                     </div>
                     <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
@@ -379,7 +392,7 @@ const Profile = () => {
                   Recent Activity
                 </h3>
                 <div className="space-y-3">
-                  {stats.map((item, idx) => (
+                  {parcels.map((item, idx) => (
                     <div
                       key={idx}
                       className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300"
