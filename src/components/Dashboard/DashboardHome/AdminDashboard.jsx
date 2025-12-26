@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                         <div className="p-6 flex flex-col items-center justify-center relative z-10">
                             {/* Icon Container */}
                         <div className="bg-white p-4 rounded-2xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
-                            {statusIcons[status] || <GiProfit className="text-4xl" />}
+                            <GiProfit className="text-4xl text-green-300" />
                         </div>
                             
                         {/* Status Label */}
