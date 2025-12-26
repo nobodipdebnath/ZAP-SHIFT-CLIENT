@@ -17,7 +17,9 @@ const Profile = () => {
   // console.log(stats)
 
   const parcels = stats.filter(parcel => parcel.created_by === user.email)
-  console.log(parcels)
+
+  const parcelCost = parcels.reduce((sum, item) => sum + Number(item.cost), 0);
+  // console.log(parcelCost)
 
   const inTransit = parcels.filter(
     (p) => p.delivery_status === "in_transit"
@@ -280,7 +282,7 @@ const Profile = () => {
                   Total Spent
                 </p>
                 <h3 className="text-3xl font-bold text-gray-800">
-                  ${stats.totalSpent}
+                  ৳ {parcelCost}
                 </h3>
               </div>
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
