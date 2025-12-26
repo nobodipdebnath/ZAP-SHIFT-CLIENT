@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { GiProfit } from "react-icons/gi";
 import {
     FaMotorcycle,
     FaCheckCircle,
@@ -52,7 +53,8 @@ const statusGradients = {
 };
 
 export default function AdminDashboard() {
-    const axiosSecure = useAxiosSecure();
+    const [parcels, setParcels] = useState([]);
+    const axiosSecure = useAxiosSecure()
     const { data: deliveryStatus = [], isLoading, isError, error } = useQuery({
         queryKey: ["parcelStatusCount"],
         queryFn: async () => {
@@ -63,6 +65,17 @@ export default function AdminDashboard() {
         retry: 1,
     });
 
+    useEffect(() => {
+        axiosSecure.get('/parcels')
+        .then(res => {
+            setParcels(res.data);
+        })
+    },[])
+
+    const totalCost = parcels.reduce((sum, parcel) => {return sum + Number(parcel.cost);}, 0);
+    const adminProfit = (totalCost / 100) * 40;
+    console.log(adminProfit)
+
     const processedPieData = deliveryStatus.map((item) => ({
         name: statusLabels[item.status] || item.status,
         value: item.count,
@@ -70,6 +83,7 @@ export default function AdminDashboard() {
     }))
 
     const totalParcels = deliveryStatus.reduce((sum, item) => sum + item.count, 0);
+    
 
     if (isLoading)
         return (
@@ -153,6 +167,48 @@ export default function AdminDashboard() {
                         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12"></div>
                     </div>
                 ))}
+                <div
+                    className={`relative overflow-hidden bg-gradient-to-br from-green-100 to-green-200|| 'from-gray-50 to-gray-100'} 
+                    rounded-2xl shadow-lg border-2 border-white hover:shadow-2xl hover:scale-105 
+                    transform transition-all duration-300 group`}
+                    >
+                        <div className="p-6 flex flex-col items-center justify-center relative z-10">
+                            {/* Icon Container */}
+                        <div className="bg-white p-4 rounded-2xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                            {statusIcons[status] || <GiProfit className="text-4xl" />}
+                        </div>
+                            
+                        {/* Status Label */}
+                        <h2 className="text-lg font-bold text-gray-800 text-center mb-1">
+                            Income
+                        </h2>
+                            
+                        {/* Description */}
+                        <p className="text-xs text-gray-600 text-center mb-3 px-2">
+                            Total income in parcel Delivery
+                        </p>
+                            
+                        {/* Count */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-5xl font-extrabold text-gray-800">
+                                {adminProfit} ৳
+                            </p>
+                        </div>
+                            
+                        {/* Percentage Badge */}
+                        {totalParcels > 0 && (
+                            <div className="mt-3 bg-white bg-opacity-80 px-3 py-1 rounded-full">
+                                <span className="text-sm font-semibold text-gray-700">
+                                    40%
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                        
+                        {/* Decorative Background Pattern */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12"></div>
+                </div>
             </div>
 
             {/* Pie Chart Section */}
@@ -222,6 +278,14 @@ export default function AdminDashboard() {
                             </div>
                         </div>
                     ))}
+                    <div className="text-center p-4 bg-gray-50 rounded-xl border border-gray-200">
+                        <div className="text-2xl font-bold text-green-600">
+                            {adminProfit} ৳
+                        </div>
+                        <div className="text-xs text-gray-600 mt-1">
+                            Total income
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
