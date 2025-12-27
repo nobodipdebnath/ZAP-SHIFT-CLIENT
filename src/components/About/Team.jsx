@@ -56,12 +56,18 @@ const teamMembers = [
   },
   {
     id: 9,
+    name: "Nusrat Jahan Oni",
+    role: "Call Executive",
+    image: "https://i.ibb.co.com/N2K837Vt/Whats-App-Image-2025-12-26-at-10-30-03-PM.jpg",
+  },
+  {
+    id: 10,
     name: "Nahid Islam",
     role: "Finance Manager",
     image: "https://i.ibb.co.com/wZT4k1Cf/513877341-1220725593028308-1290451784703447551-n.jpg",
   },
   {
-    id: 10,
+    id: 11,
     name: "Md Soroardi Islam ",
     role: "Creative Designer",
     image: "https://i.ibb.co.com/B2nbwQSg/Screenshot-2025-12-24-171606.png",
