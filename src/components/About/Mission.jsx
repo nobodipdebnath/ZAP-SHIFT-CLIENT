@@ -196,7 +196,7 @@ const Mission = () => {
           className={`p-2 rounded-lg transition-all ${
             currentPage === 1
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-white text-green-600 hover:bg-green-50 shadow-md hover:shadow-lg'
+              : 'bg-white text-green-600 hover:bg-green-50 cursor-pointer shadow-md hover:shadow-lg'
           }`}
         >
           <ChevronLeft className="w-5 h-5" />
@@ -209,7 +209,7 @@ const Mission = () => {
             <button
               key={pageNumber}
               onClick={() => handlePageChange(pageNumber)}
-              className={`w-10 h-10 rounded-lg font-semibold transition-all ${
+              className={`w-10 h-10 rounded-lg font-semibold cursor-pointer transition-all ${
                 currentPage === pageNumber
                   ? 'bg-gradient-to-r from-green-600 to-emerald-500 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-green-50 shadow-md hover:shadow-lg'
@@ -227,7 +227,7 @@ const Mission = () => {
           className={`p-2 rounded-lg transition-all ${
             currentPage === totalPages
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-white text-green-600 hover:bg-green-50 shadow-md hover:shadow-lg'
+              : 'bg-white text-green-600 hover:bg-green-50 shadow-md cursor-pointer hover:shadow-lg'
           }`}
         >
           <ChevronRight className="w-5 h-5" />
