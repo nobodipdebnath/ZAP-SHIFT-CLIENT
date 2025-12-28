@@ -9,7 +9,7 @@ const missions = [
     description: "Deliver parcels quickly and on time across all locations.",
     color: "from-green-400 to-emerald-500",
     bgColor: "bg-green-50",
-    image: "https://picsum.photos/seed/delivery1/400/300",
+    image: "https://i.ibb.co.com/KzbR8b6F/OIP.webp",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const missions = [
     description: "Ensure parcels are handled carefully and safely throughout the journey.",
     color: "from-blue-400 to-cyan-500",
     bgColor: "bg-blue-50",
-    image: "https://picsum.photos/seed/security2/400/300",
+    image: "https://i.ibb.co.com/wFQRgFVh/OIP-1.webp",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const missions = [
     description: "Provide excellent service to ensure every customer is happy.",
     color: "from-yellow-400 to-orange-500",
     bgColor: "bg-yellow-50",
-    image: "https://picsum.photos/seed/happy3/400/300",
+    image: "https://i.ibb.co.com/TBSjhpjJ/tools-to-measure-the-level-of-customer-satisfaction-with-the-service-of-employees-vector.jpg",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const missions = [
     description: "Allow customers to track parcels live from pickup to delivery.",
     color: "from-purple-400 to-pink-500",
     bgColor: "bg-purple-50",
-    image: "https://picsum.photos/seed/tracking4/400/300",
+    image: "https://i.ibb.co.com/Jj0C9Fv3/DALL-E-2024-12-11-21-12-11-A-modern-clean-and-professional-featured-image-for-an-article-about-What.webp",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const missions = [
     description: "Cater to both personal and business parcel delivery needs.",
     color: "from-indigo-400 to-blue-500",
     bgColor: "bg-indigo-50",
-    image: "https://picsum.photos/seed/business5/400/300",
+    image: "https://i.ibb.co.com/pr3Vq7NK/OIP-2.webp",
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const missions = [
     description: "Use sustainable practices and green vehicles to reduce environmental impact.",
     color: "from-green-500 to-teal-500",
     bgColor: "bg-teal-50",
-    image: "https://picsum.photos/seed/eco6/400/300",
+    image: "https://i.ibb.co.com/prjGY4rH/sustainability-green-initiatives-and-eco-friendly-practices-free-photo.jpg",
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const missions = [
     description: "Offer convenient pickup and delivery time slots that fit your schedule.",
     color: "from-rose-400 to-red-500",
     bgColor: "bg-rose-50",
-    image: "https://picsum.photos/seed/time7/400/300",
+    image: "https://i.ibb.co.com/DfHYw2bg/flexible-schedule-handwritten-memo-on-the-calendar-1202291839-9864ad4e70cc4a49be1d2dafb0695dac.jpg",
   },
   {
     id: 8,
@@ -72,7 +72,7 @@ const missions = [
     description: "Build lasting relationships with reliable courier partners and vendors.",
     color: "from-amber-400 to-yellow-600",
     bgColor: "bg-amber-50",
-    image: "https://picsum.photos/seed/partner8/400/300",
+    image: "https://i.ibb.co.com/dJcYV6wt/two-business-man-shaking-hand-for-partnership-ai-generated-photo.jpg",
   },
   {
     id: 9,
@@ -81,7 +81,7 @@ const missions = [
     description: "Manage deliveries effortlessly through our user-friendly mobile app.",
     color: "from-cyan-400 to-blue-500",
     bgColor: "bg-cyan-50",
-    image: "https://picsum.photos/seed/mobile9/400/300",
+    image: "https://i.ibb.co.com/2YW5bP1W/My-Kumon-App-Article-05.webp",
   },
   {
     id: 10,
@@ -90,7 +90,7 @@ const missions = [
     description: "Reach every corner of the country with our extensive delivery network.",
     color: "from-emerald-400 to-green-600",
     bgColor: "bg-emerald-50",
-    image: "https://picsum.photos/seed/global10/400/300",
+    image: "https://i.ibb.co.com/m52yxHKg/OIP-3.webp",
   },
   {
     id: 11,
@@ -99,7 +99,7 @@ const missions = [
     description: "Maintain the highest standards in every step of the delivery process.",
     color: "from-violet-400 to-purple-500",
     bgColor: "bg-violet-50",
-    image: "https://picsum.photos/seed/quality11/400/300",
+    image: "https://i.ibb.co.com/BKKbBN6w/OIP-4.webp",
   },
   {
     id: 12,
@@ -108,7 +108,7 @@ const missions = [
     description: "Get help anytime with our round-the-clock customer support team.",
     color: "from-fuchsia-400 to-pink-500",
     bgColor: "bg-fuchsia-50",
-    image: "https://picsum.photos/seed/support12/400/300",
+    image: "https://i.ibb.co.com/1GJv87TY/istockphoto-1494073880-170667a.jpg",
   },
 ];
 
