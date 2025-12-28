@@ -6,32 +6,28 @@ const storySections = [
   {
     id: 1,
     title: "Our Beginning",
-    description:
-      "Parcel Delivery App was founded with a vision to provide fast, reliable, and secure parcel delivery for individuals and businesses across the country.",
+    description: "Parcel Delivery App was founded with a vision to provide fast, reliable, and secure parcel delivery for individuals and businesses across the country.",
     icon: <FaFlag />,
     image: null,
   },
   {
     id: 2,
     title: "Our Mission",
-    description:
-      "We are committed to delivering parcels safely and on time while ensuring customer satisfaction and real-time tracking.",
+    description: "We are committed to delivering parcels safely and on time while ensuring customer satisfaction and real-time tracking.",
     icon: <FaBullseye />,
     image: null,
   },
   {
     id: 3,
     title: "Our Values",
-    description:
-      "Integrity, reliability, professionalism, and innovation guide everything we do.",
+    description: "Integrity, reliability, professionalism, and innovation guide everything we do.",
     icon: <FaHeart />,
     image: null,
   },
   {
     id: 4,
     title: "Achievements",
-    description:
-      "Delivered 50,000+ parcels, maintained 99% on-time delivery rate, and earned the trust of thousands of happy customers.",
+    description: "Delivered 50,000+ parcels, maintained 99% on-time delivery rate, and earned the trust of thousands of happy customers.",
     icon: <FaTrophy />,
     image: null,
   },
