@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router";
 
@@ -53,21 +54,22 @@ const Blogs = () => {
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage((p) => p - 1)}
-          className={`px-3 py-2 rounded-lg border border-input-text ${
-            currentPage === 1 ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100 cursor-pointer"
+          className={`p-2 rounded-lg transition-all ${
+            currentPage === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" 
+            : "bg-white text-green-600 hover:bg-green-50 cursor-pointer shadow-md hover:shadow-lg"
           }`}
         >
-          Prev
+          <ChevronLeft className="w-5 h-5" />
         </button>
 
         {[...Array(totalPages)].map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-2 rounded-lg border border-input-text cursor-pointer ${
+            className={`w-10 h-10 rounded-lg font-semibold cursor-pointer transition-all ${
               currentPage === i + 1
-                ? "bg-[#c0dd67] text-green-blue"
-                : "hover:bg-gray-100"
+                ? "bg-gradient-to-r from-green-600 to-emerald-500 text-white shadow-lg"
+                : "bg-white text-gray-700 hover:bg-green-50 shadow-md hover:shadow-lg"
             }`}
           >
             {i + 1}
@@ -77,13 +79,13 @@ const Blogs = () => {
         <button
           disabled={currentPage === totalPages}
           onClick={() => setCurrentPage((p) => p + 1)}
-          className={`px-3 py-2 rounded-lg border border-input-text text-input-label ${
+          className={`p-2 rounded-lg transition-all ${
             currentPage === totalPages
-              ? "opacity-40 cursor-not-allowed"
-              : "hover:bg-gray-100 cursor-pointer"
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-white text-green-600 hover:bg-green-50 shadow-md cursor-pointer hover:shadow-lg"
           }`}
         >
-          Next
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
     </div>
