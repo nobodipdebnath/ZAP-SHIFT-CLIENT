@@ -18,27 +18,28 @@ const teamMembers = [
     name: "MD Murad",
     role: "Operations Manager",
     image: "https://i.ibb.co.com/2YsZj2Ky/524968217-1375390253550397-2143126781331599520-n.jpg",
-    facebook: '',
-    instagram: '',
-    linkedin: '',
-    email: ''
+    facebook: 'https://www.facebook.com/muradvanhellsing',
+    instagram: 'https://www.instagram.com/john_snow_62/',
+    linkedin: 'https://www.linkedin.com/in/mdmurad403/',
+    email: 'mdmurad.dev2004@gmail.com'
   },
   {
     id: 3,
     name: "MD Rana Islam",
     role: "Delivery Manager",
     image: "https://i.ibb.co.com/rKbLHbsc/481452150-122234052176027349-1257594455478964426-n.jpg",
-    facebook: '',
-    instagram: '',
-    linkedin: '',
-    email: ''
+    facebook: 'https://www.facebook.com/RanaFacebook01',
+    // Not added instagram
+    instagram: '', 
+    linkedin: 'https://www.linkedin.com/in/rana-islam-23166139b/',
+    email: 'linkedinrana01@gmail.com'
   },
   {
     id: 4,
     name: "MD Masud Rana",
     role: "Customer Support Lead",
     image: "https://i.ibb.co.com/60SZ3WMj/486636420-1878898449544894-3129450576927765247-n.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/MdMasudRana2155',
     instagram: '',
     linkedin: '',
     email: ''
@@ -48,7 +49,7 @@ const teamMembers = [
     name: "Kanita Jahan",
     role: "Delivery Team",
     image: "https://i.ibb.co.com/d4ChphgV/kanita.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/rinte.roja',
     instagram: '',
     linkedin: '',
     email: ''
@@ -58,9 +59,9 @@ const teamMembers = [
     name: "Nifad Zaman",
     role: "Delivery Team",
     image: "https://i.ibb.co.com/svN9yPz7/501022075-728724229662155-8956302690168876055-n.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/nifad2005',
     instagram: '',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/404/',
     email: ''
   },
   {
@@ -68,7 +69,7 @@ const teamMembers = [
     name: "Rontu Mohonto",
     role: "Marketing Manager",
     image: "https://i.ibb.co.com/bRryK6N0/558747830-122122467320980012-8661329893000360268-n.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/profile.php?id=61579400378693',
     instagram: '',
     linkedin: '',
     email: ''
@@ -78,7 +79,7 @@ const teamMembers = [
     name: "Bijoy Roy",
     role: "HR Manager",
     image: "https://i.ibb.co.com/FL2ywwZp/486600052-1169306098320667-7006547963581715242-n.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/bijoy.roy.622494',
     instagram: '',
     linkedin: '',
     email: ''
@@ -88,7 +89,7 @@ const teamMembers = [
     name: "Nusrat Jahan Oni",
     role: "Call Executive",
     image: "https://i.ibb.co.com/N2K837Vt/Whats-App-Image-2025-12-26-at-10-30-03-PM.jpg",
-    facebook: '',
+    facebook: 'https://www.facebook.com/nusrat.jahan.649606',
     instagram: '',
     linkedin: '',
     email: ''
@@ -98,8 +99,8 @@ const teamMembers = [
     name: "Nahid Islam",
     role: "Finance Manager",
     image: "https://i.ibb.co.com/wZT4k1Cf/513877341-1220725593028308-1290451784703447551-n.jpg",
-    facebook: '',
-    instagram: '',
+    facebook: 'https://www.facebook.com/nahid.ismail.737',
+    instagram: 'https://www.instagram.com/nahid.ismail.737?fbclid=IwY2xjawO-KxtleHRuA2FlbQIxMABicmlkETFzd0ZwbE5tbmlWZnRvR2Vtc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtV8wcGt-e7TVmvJtAD2AdF3NpUQOCwpN7M38MN2V6eW41XA8DvmzGejPLnA_aem_ACDlR3mvHfUJab5vwLsRQA',
     linkedin: '',
     email: ''
   },
@@ -108,7 +109,7 @@ const teamMembers = [
     name: "Md Soroardi Islam ",
     role: "Creative Designer",
     image: "https://i.ibb.co.com/B2nbwQSg/Screenshot-2025-12-24-171606.png",
-    facebook: '',
+    facebook: 'https://www.facebook.com/mdsoroardi.islam',
     instagram: '',
     linkedin: '',
     email: ''
