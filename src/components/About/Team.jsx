@@ -17,64 +17,101 @@ const teamMembers = [
     id: 2,
     name: "MD Murad",
     role: "Operations Manager",
-    image:
-      "https://i.ibb.co.com/2YsZj2Ky/524968217-1375390253550397-2143126781331599520-n.jpg",
+    image: "https://i.ibb.co.com/2YsZj2Ky/524968217-1375390253550397-2143126781331599520-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 3,
     name: "MD Rana Islam",
     role: "Delivery Manager",
-    image:
-      "https://i.ibb.co.com/rKbLHbsc/481452150-122234052176027349-1257594455478964426-n.jpg",
+    image: "https://i.ibb.co.com/rKbLHbsc/481452150-122234052176027349-1257594455478964426-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 4,
     name: "MD Masud Rana",
     role: "Customer Support Lead",
-    image:
-      "https://i.ibb.co.com/60SZ3WMj/486636420-1878898449544894-3129450576927765247-n.jpg",
+    image: "https://i.ibb.co.com/60SZ3WMj/486636420-1878898449544894-3129450576927765247-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 5,
     name: "Kanita Jahan",
     role: "Delivery Team",
     image: "https://i.ibb.co.com/d4ChphgV/kanita.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 6,
     name: "Nifad Zaman",
     role: "Delivery Team",
     image: "https://i.ibb.co.com/svN9yPz7/501022075-728724229662155-8956302690168876055-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 7,
     name: "Rontu Mohonto",
     role: "Marketing Manager",
     image: "https://i.ibb.co.com/bRryK6N0/558747830-122122467320980012-8661329893000360268-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 8,
     name: "Bijoy Roy",
     role: "HR Manager",
     image: "https://i.ibb.co.com/FL2ywwZp/486600052-1169306098320667-7006547963581715242-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 9,
     name: "Nusrat Jahan Oni",
     role: "Call Executive",
     image: "https://i.ibb.co.com/N2K837Vt/Whats-App-Image-2025-12-26-at-10-30-03-PM.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 10,
     name: "Nahid Islam",
     role: "Finance Manager",
     image: "https://i.ibb.co.com/wZT4k1Cf/513877341-1220725593028308-1290451784703447551-n.jpg",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
   {
     id: 11,
     name: "Md Soroardi Islam ",
     role: "Creative Designer",
     image: "https://i.ibb.co.com/B2nbwQSg/Screenshot-2025-12-24-171606.png",
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    email: ''
   },
 ];
 
@@ -155,10 +192,12 @@ const Team = () => {
                   <Link>
                     <button
                       className="p-2 cursor-pointer bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
-                      onClick={() =>
-                        window.location.href =
-                          `mailto:${member.email}?subject=Hello&body=Write your message here`
-                      }
+                      onClick={() => {
+                        const subject = encodeURIComponent("Hello");
+                        const body = encodeURIComponent("Write your message here");
+
+                        window.location.href = `mailto:${member.email}?subject=${subject}&body=${body}`;
+                      }}
                     >
                       <Mail className="w-5 h-5 text-green-600" />
                     </button>
