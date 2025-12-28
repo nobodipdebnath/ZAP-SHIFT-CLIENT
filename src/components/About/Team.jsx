@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, Linkedin, Mail } from "lucide-react";
+import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router";
 
-// Example team data
 const teamMembers = [
   {
     id: 1,
     name: "Nobodip Debnath",
     role: "CEO & Founder",
     image: "https://i.ibb.co.com/mrZXsm4j/Screenshot-2024-06-23-102949.png",
+    facebook: 'https://www.facebook.com/profile.php?id=61554300737206',
+    linkedin: 'https://www.linkedin.com/in/nobodip-debnath-676928351/',
+    instagram: 'https://www.instagram.com/nobodip.debnath01/',
+    email: 'nobodipdebnath45@gmail.com'
   },
   {
     id: 2,
@@ -78,7 +82,6 @@ const Team = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const membersPerPage = 6;
 
-  // Pagination Logic
   const indexOfLastMember = currentPage * membersPerPage;
   const indexOfFirstMember = indexOfLastMember - membersPerPage;
   const currentMembers = teamMembers.slice(
@@ -90,12 +93,11 @@ const Team = () => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="lg:px-16 md:px-6 my-12 bg-gradient-to-b from-white to-gray-50 py-16">
-      {/* Header */}
       <div className="text-center mb-16">
         <div className="inline-block">
           <h1 className="text-5xl font-extrabold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
@@ -109,21 +111,16 @@ const Team = () => {
         </p>
       </div>
 
-      {/* Team Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
         {currentMembers.map((member, index) => (
           <div
             key={member.id}
             className="group relative py-8 p-4 lg:px-10 bg-white shadow-lg hover:shadow-2xl rounded-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
-            style={{
-              animationDelay: `${index * 100}ms`,
-            }}
+            style={{ animationDelay: `${index * 100}ms` }}
           >
-            {/* Gradient background on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-            
+
             <div className="relative">
-              {/* Image with border and gradient ring */}
               <div className="relative mx-auto w-[200px] h-[200px] md:w-[250px] md:h-[250px]">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 rounded-full animate-pulse opacity-20 group-hover:opacity-40 transition-opacity"></div>
                 <img
@@ -131,11 +128,10 @@ const Team = () => {
                   alt={member.name}
                   className="relative rounded-full h-full w-full border-4 border-white shadow-xl object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                {/* Online status indicator */}
+
                 <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 border-4 border-white rounded-full"></div>
               </div>
 
-              {/* Member Info */}
               <div className="flex items-center justify-center flex-col mt-6">
                 <h2 className="text-2xl font-extrabold bg-gradient-to-r from-green-700 to-blue-700 bg-clip-text text-transparent group-hover:from-green-600 group-hover:to-blue-600 transition-all">
                   {member.name}
@@ -143,28 +139,46 @@ const Team = () => {
                 <p className="text-base font-medium text-gray-600 mt-1">
                   {member.role}
                 </p>
+                <div className="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link to={member.linkedin} target="_blank">
+                    <button className="p-2 bg-blue-50 cursor-pointer hover:bg-blue-100 rounded-lg transition-colors">
+                      <Linkedin className="w-5 h-5 text-blue-600" />
+                    </button>
+                  </Link>
 
-                {/* Social Links */}
-                <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="p-2 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <Linkedin className="w-5 h-5 text-blue-600" />
-                  </button>
-                  <button className="p-2 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
-                    <Mail className="w-5 h-5 text-green-600" />
-                  </button>
+                  <Link to={member.facebook} target="_blank">
+                    <button className="p-2 cursor-pointer bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                      <Facebook className="w-5 h-5 text-blue-600" />
+                    </button>
+                  </Link>
+
+                  <Link>
+                    <button
+                      className="p-2 cursor-pointer bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
+                      onClick={() =>
+                        window.location.href =
+                          `mailto:${member.email}?subject=Hello&body=Write your message here`
+                      }
+                    >
+                      <Mail className="w-5 h-5 text-green-600" />
+                    </button>
+                  </Link>
+
+                  <Link to={member.instagram} target="_blank">
+                    <button className="p-2 cursor-pointer bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                      <Instagram className="w-5 h-5 text-green-600" />
+                    </button>
+                  </Link>
                 </div>
               </div>
 
-              {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Pagination Controls */}
       <div className="flex items-center justify-center gap-2 mt-8">
-        {/* Previous Button */}
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
@@ -177,7 +191,6 @@ const Team = () => {
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        {/* Page Numbers */}
         {Array.from({ length: totalPages }, (_, idx) => (
           <button
             key={idx + 1}
@@ -192,7 +205,6 @@ const Team = () => {
           </button>
         ))}
 
-        {/* Next Button */}
         <button
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
@@ -206,7 +218,6 @@ const Team = () => {
         </button>
       </div>
 
-      {/* Page Info */}
       <p className="text-center mt-4 text-gray-600 text-sm">
         Showing {indexOfFirstMember + 1}-{Math.min(indexOfLastMember, teamMembers.length)} of {teamMembers.length} team members
       </p>
