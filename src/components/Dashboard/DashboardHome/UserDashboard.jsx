@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
 
 const UserDashboard = () => {
@@ -23,10 +23,10 @@ const UserDashboard = () => {
     fetchParcels();
   }, [axiosSecure]);
 
-  const myParcels = parcels.filter(parcel => parcel.email === user.email)
-  const totalParcels = myParcels.length;
-  const inTransit = myParcels.filter(p => p.delivery_status === "in_transit").length;
-  const delivered = myParcels.filter(p => p.delivery_status === "delivered").length;
+  const totalParcels = parcels.length;
+  console.log('test',parcels);
+  const inTransit = parcels.filter(p => p.delivery_status === "in_transit").length;
+  const delivered = parcels.filter(p => p.delivery_status === "delivered").length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 px-4 sm:px-6 lg:px-16 py-8">
@@ -139,7 +139,7 @@ const UserDashboard = () => {
                   <p className="text-slate-600">Loading parcels...</p>
                 </div>
               </div>
-            ) : myParcels.length === 0 ? (
+            ) : parcels.length === 0 ? (
               <div className="text-center py-12">
                 <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +160,7 @@ const UserDashboard = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {myParcels.slice(0, 5).map((parcel) => (
+                    {parcels.slice(0, 5).map((parcel) => (
                       <tr key={parcel._id} className="hover:bg-slate-50 transition-colors duration-150">
                         <td className="py-4 px-6 text-sm font-semibold text-slate-800">
                           <div className="flex items-center gap-2">
