@@ -30,7 +30,7 @@ const Support = () => {
                 {
                     supports.map(support => {
                         return(
-                            <div className='p-8 rounded-3xl bg-white flex flex-col md:flex-row items-center gap-12' key={support.id}>
+                            <div className='lg:p-8 p-4 rounded-3xl bg-white flex flex-col md:flex-row items-center gap-12' key={support.id}>
                                 <div className='pr-12 lg:border-r-2 lg:border-b-0 border-b-2 pb-8 md:pb-0 border-dashed border-green-blue'>
                                     <img src={support.image} alt="" />
                                 </div>

@@ -133,7 +133,7 @@ const SendParcel = () => {
     };
 
     return (
-        <div className="lg:py-20 py-8 px-5 lg:px-28 bg-white rounded-4xl my-8">
+        <div className="lg:py-20 py-8 px-3 lg:px-28 bg-white rounded-4xl my-8">
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Heading */}
                 <h1 className="lg:text-[56px] text-5xl font-extrabold  text-green-blue">Add Parcel</h1>

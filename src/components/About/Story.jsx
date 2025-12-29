@@ -57,7 +57,7 @@ const Story = () => {
             }`}
           >
             {/* Card */}
-            <div className="w-full md:w-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 p-7">
+            <div className="w-full md:w-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 p-4 lg:p-7">
               <div className="flex items-center gap-3 mb-3">
                 {/* Icon / Image */}
                 {section.image ? (
