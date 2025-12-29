@@ -53,7 +53,7 @@ const Testimonial = () => {
           navigation={{ nextEl: ".testimonial-next", prevEl: ".testimonial-prev" }}
           autoplay={{ delay: 2500, disableOnInteraction: true }}
           pagination={{ clickable: true }}
-          loop={true}
+          loop={false}
           grabCursor={true}
           breakpoints={{
             0: { slidesPerView: 1, spaceBetween: 16 },

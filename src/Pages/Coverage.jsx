@@ -23,7 +23,7 @@ const Coverage = () => {
     }
 
     return (
-        <div className='lg:py-20 py-8 px-5 lg:px-27 bg-white rounded-4xl mt-8 mb-25'>
+        <div className='lg:py-20 py-8 px-2 lg:px-27 bg-white rounded-4xl mt-8 mb-25'>
             <h2 className="lg:text-[56px] text-5xl text-center md:text-start leading-[110%] font-extrabold text-green-blue">We are available in 64 districts</h2>
             <div className='mt-8 mb-12'>
                 {/* search  */}

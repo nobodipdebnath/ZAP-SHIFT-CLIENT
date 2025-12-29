@@ -74,7 +74,7 @@ export default function AdminDashboard() {
 
     const totalCost = parcels.reduce((sum, parcel) => {return sum + Number(parcel.cost);}, 0);
     const adminProfit = (totalCost / 100) * 40;
-    console.log(adminProfit)
+    // console.log(adminProfit)
 
     const processedPieData = deliveryStatus.map((item) => ({
         name: statusLabels[item.status] || item.status,

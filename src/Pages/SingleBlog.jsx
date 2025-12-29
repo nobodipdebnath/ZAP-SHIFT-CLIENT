@@ -8,7 +8,7 @@ const SingleBlog = () => {
 
     const blog = blogs.find(b => String(b.id) === String(id));
 
-    console.log(blog);
+    // console.log(blog);
 
     return (
         <div className="bg-white rounded-3xl px-3 md:p-16 my-8 grid grid-cols-1 lg:grid-cols-2 gap-7 py-10">

@@ -41,7 +41,7 @@ const Register = () => {
             }
             updateUserProfile(userProfile)
             .then(()=>{
-                console.log('Profile pic update');
+                // console.log('Profile pic update');
             })
             .catch(error  => {
                 console.log(error);

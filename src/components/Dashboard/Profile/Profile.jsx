@@ -105,7 +105,7 @@ const Profile = () => {
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Profile Header Section */}
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <div className="relative h-80">
+          <div className="relative h-screen md:h-80">
             <img
               className="w-full h-full object-cover"
               src="https://i.ibb.co.com/q3gmmh6N/banner2.png"
@@ -307,10 +307,10 @@ const Profile = () => {
         {/* Tabs Section */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100">
           <div className="border-b border-gray-200">
-            <div className="flex gap-2 p-2">
+            <div className="flex lg:gap-2 p-2">
               <button
                 onClick={() => setActiveTab("overview")}
-                className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
+                className={`lg:px-6 px-3 py-3 rounded-lg font-semibold transition duration-300 ${
                   activeTab === "overview"
                     ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
                     : "text-gray-600 hover:bg-gray-100"
@@ -320,7 +320,7 @@ const Profile = () => {
               </button>
               <button
                 onClick={() => setActiveTab("activity")}
-                className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
+                className={`lg:px-6 px-3 py-3 rounded-lg font-semibold transition duration-300 ${
                   activeTab === "activity"
                     ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
                     : "text-gray-600 hover:bg-gray-100"
@@ -330,7 +330,7 @@ const Profile = () => {
               </button>
               <button
                 onClick={() => setActiveTab("settings")}
-                className={`px-6 py-3 rounded-lg font-semibold transition duration-300 ${
+                className={`lg:px-6 px-3 py-3 rounded-lg font-semibold transition duration-300 ${
                   activeTab === "settings"
                     ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-md"
                     : "text-gray-600 hover:bg-gray-100"
@@ -341,7 +341,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="p-8">
+          <div className="lg:p-8 p-4">
             {activeTab === "overview" && (
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -349,7 +349,7 @@ const Profile = () => {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center justify-between p-4 lg:bg-gray-50 bg-gray-100 rounded-xl">
                       <span className="text-gray-600 font-medium">
                         Member Since
                       </span>
@@ -357,7 +357,7 @@ const Profile = () => {
                         {formatMonthYear(profile?.created_at || "January 2024")}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-100 lg:bg-gray-50 rounded-xl">
                       <span className="text-gray-600 font-medium">
                         Account Status
                       </span>
@@ -367,7 +367,7 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-100 lg:bg-gray-50 rounded-xl">
                       <span className="text-gray-600 font-medium">
                         Location
                       </span>
@@ -375,7 +375,7 @@ const Profile = () => {
                         {riders?.district || "Not Set"}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-100 lg:bg-gray-50 rounded-xl">
                       <span className="text-gray-600 font-medium">
                         Preferred Language
                       </span>
@@ -397,7 +397,7 @@ const Profile = () => {
                   {parcels.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300"
+                      className="flex items-center lg:gap-4 gap-2 px-2 py-3 lg:p-4 bg-gray-100 lg:bg-gray-50 rounded-xl hover:bg-gray-100 transition duration-300"
                     >
                       <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center shrink-0">
                         <svg

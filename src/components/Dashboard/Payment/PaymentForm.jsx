@@ -79,7 +79,7 @@ const PaymentForm = () => {
       console.log("Stripe error:", error);
     } else {
       setSuccessMsg("Payment method created: " + paymentMethod.id);
-      console.log("Payment method:", paymentMethod);
+      // console.log("Payment method:", paymentMethod);
       // এখানে paymentIntent backend এ create করে confirm করতে হবে
 
       const res = await axiosSecure.post("/create-payment-intent", {
@@ -104,7 +104,7 @@ const PaymentForm = () => {
       } else {
         if (result.paymentIntent.status === "succeeded") {
           console.log("Payment Succeeded");
-          console.log(result);
+          // console.log(result);
 
           const paymentData = {
             id,

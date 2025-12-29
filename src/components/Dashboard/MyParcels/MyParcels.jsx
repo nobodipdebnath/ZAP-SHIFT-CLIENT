@@ -37,7 +37,7 @@ const MyParcels = () => {
   };
 
   const handlePay = (id) => {
-    console.log("Proceed to payment for", id);
+    // console.log("Proceed to payment for", id);
     navigate(`/dashboard/payment/${id}`);
   };
 
@@ -55,7 +55,7 @@ const MyParcels = () => {
     if (confirm.isConfirmed) {
       try {
         axiosSecure.delete(`/parcels/${id}`).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",

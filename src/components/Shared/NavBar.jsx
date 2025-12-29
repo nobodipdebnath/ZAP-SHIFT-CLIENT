@@ -9,6 +9,7 @@ const NavBar = () => {
 
     const [open, setOpen] = useState(false); // 🔹 added
     const {user, logOutUser} = useAuth();
+    // console.log(user);
 
     const links = <>
         <li onClick={() => setOpen(false)} className='px-5 py-3 rounded-full duration-500'><NavLink to='/'>Home</NavLink></li>
@@ -94,7 +95,13 @@ const NavBar = () => {
             </div>
 
             {/* 🔥 Mobile Menu Icon */}
-            <div className="lg:hidden">
+            <div className="lg:hidden flex gap-2">
+                {
+                    user && 
+                    <div>
+                        <img className="h-12 w-12 rounded-full border-3 border-green-500 object-cover" src={user?.photoURL} alt="" />
+                    </div>
+                }
                 <button onClick={() => setOpen(true)}>
                     <FiMenu className="text-3xl" />
                 </button>
