@@ -32,16 +32,16 @@ const Footer = () => {
                 </div>
                 <div className='w-full border-t border-t-[#03464D] border-dashed'></div>
                 <div className='flex gap-3 lg:gap-6 mt-8 items-center'>
-                    <Link className='p-3 rounded-full bg-[#2489BE] shadow'>
+                    <Link to='https://www.linkedin.com/in/nobodip-debnath-676928351/' target='_blank' className='p-3 rounded-full bg-[#2489BE] shadow'>
                         <FaLinkedinIn></FaLinkedinIn>
                     </Link>
-                    <Link className='p-3 rounded-full bg-white shadow'>
+                    <Link to='https://x.com/DebnathD46507' target='_blank' className='p-3 rounded-full bg-white shadow'>
                         <FaXTwitter></FaXTwitter>
                     </Link>
-                    <Link className='p-3 rounded-full bg-[#00B2FF] shadow'>
+                    <Link to='https://www.facebook.com/profile.php?id=61554300737206' target='_blank' className='p-3 rounded-full bg-[#00B2FF] shadow'>
                         <FaFacebookF className='text-white'></FaFacebookF>
                     </Link>
-                    <Link className='p-3 rounded-full bg-[#B71C1C] shadow'>
+                    <Link to='https://www.youtube.com/@NobodipDebnath' target='_blank' className='p-3 rounded-full bg-[#B71C1C] shadow'>
                         <FaYoutube className='text-white'></FaYoutube>
                     </Link>
                 </div>

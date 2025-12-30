@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import FAQItem from "./FAQItem";
 
 const FAQSection = () => {
@@ -28,6 +29,15 @@ const FAQSection = () => {
         "You will receive an email notification once the product becomes available.",
     },
   ];
+  const handleButton = () => {
+   toast.error("This service is not available", {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
+  };
   return (
     <div className="max-w-5xl mx-auto lg:px-4 py-10">
       <h2 className="lg:text-[40px] text-4xl font-extrabold text-center text-green-blue">
@@ -35,7 +45,9 @@ const FAQSection = () => {
       </h2>
 
       <p className="text-base text-black-base text-center mt-4 ">
-        Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce <br /> pain, and strengthen your body with ease!
+        Enhance posture, mobility, and well-being effortlessly with Posture Pro.
+        Achieve proper alignment, reduce <br /> pain, and strengthen your body
+        with ease!
       </p>
 
       <div className="flex flex-col mt-10 gap-4">
@@ -45,7 +57,10 @@ const FAQSection = () => {
       </div>
 
       <div className="text-center mt-6">
-        <button className="px-8 py-4 rounded-2xl font-semibold md:lg text-base lg:text-xl bg-[#CAEB66] text-green-blue cursor-pointer duration-500 hover:bg-[#a5c640]">
+        <button
+          onClick={handleButton}
+          className="px-8 py-4 rounded-2xl font-semibold md:lg text-base lg:text-xl bg-[#CAEB66] text-green-blue cursor-pointer duration-500 hover:bg-[#a5c640]"
+        >
           See More FAQ’s
         </button>
       </div>

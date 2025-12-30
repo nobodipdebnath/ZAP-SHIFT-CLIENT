@@ -8,7 +8,7 @@ const RiderDashboard = () => {
   const [parcels, setParcels] = useState([]);
   const [myParcels, setMyParcels] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {user} = useAuth();
+  const { user } = useAuth();
   const email = user?.email;
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const RiderDashboard = () => {
     fetchParcels();
   }, [axiosSecure]);
 
-  const { data: delivere = [], isLoading } = useQuery({
+  const { data: delivere = [] } = useQuery({
     queryKey: ["completedDeliveries", email],
     enabled: !!email,
     queryFn: async () => {
@@ -67,6 +67,10 @@ const RiderDashboard = () => {
   const myParcelInDelivered = myParcels.filter(
     (p) => p.delivery_status === "delivered"
   ).length;
+
+  const sorted = myParcels.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 px-4 sm:px-6 lg:px-16 py-8">
@@ -387,7 +391,7 @@ const RiderDashboard = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {myParcels.slice(0, 5).map((parcel) => (
+                      {sorted.slice(0, 5).map((parcel) => (
                         <tr
                           key={parcel._id}
                           className="hover:bg-slate-50 transition-colors duration-150"
