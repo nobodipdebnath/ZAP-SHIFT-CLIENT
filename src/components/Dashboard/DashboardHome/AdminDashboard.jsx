@@ -212,7 +212,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Pie Chart Section */}
-            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 border border-gray-100">
+            <div className="bg-white rounded-3xl shadow-2xl md:p-8 p-4 border border-gray-100">
                 <div className="mb-6">
                     <h2 className="text-3xl font-bold text-gray-800 mb-2">
                         Delivery Status Breakdown
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                     <p className="text-gray-600">Visual representation of parcel distribution</p>
                 </div>
                 
-                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6">
+                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl md:p-6">
                     <ResponsiveContainer width="100%" height={500}>
                         <PieChart>
                             <Pie
